@@ -1,0 +1,13 @@
+---
+const { href = '#', external = true, download = false } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external && !download ? '_blank' : undefined}
+  rel={external && !download ? 'noopener noreferrer' : undefined}
+  download={download ? true : undefined}
+  class="glass-button paragraph glow-hover"
+>
+  <slot />
+</a>

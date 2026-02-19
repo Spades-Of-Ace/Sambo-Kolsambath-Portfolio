@@ -1,0 +1,102 @@
+---
+import Button from '../components/Button.astro';
+import GlassSection from '../components/GlassSection.astro';
+---
+
+<GlassSection>
+  <section>
+    <div>
+      <h1 class="text-5xl glow font-semibold section-title">Personal</h1>
+
+      <div class="">
+        <p class="paragraph glow-hover mb-4 leading-[1.9] text-center">
+          You’ve reached the core. If this journey resonated with you, let’s
+          connect and build something beyond the horizon.
+        </p>
+      </div>
+      <!--  -->
+      <div>
+        <h2 class="text-2xl glow-hover text-left mt-4 mb-4">Professional</h2>
+
+        <div class="flex justify-start gap-6">
+          <div>
+            <Button
+              href="https://www.linkedin.com/in/sambo-kolsambath-76269a2a0/"
+            >
+              <span class="flex items-center gap-2">
+                <img
+                  src="/icons/linkedin-svg.svg"
+                  alt="LinkedIn"
+                  class="w-8 h-8"
+                />
+                LinkedIn
+              </span>
+            </Button>
+          </div>
+
+          <div>
+            <Button href="https://github.com/Spades-Of-Ace">
+              <span class="flex items-center gap-2">
+                <img src="/icons/github-svg.svg" alt="GitHub" class="w-8 h-8" />
+                Github
+              </span>
+            </Button>
+          </div>
+
+          <div>
+            <Button href="/cv/resume.pdf" external={false} download={true}>
+              <span class="flex items-center gap-2">
+                <img src="/icons/file-svg.svg" alt="File" class="w-8 h-8" />
+                Download Resume
+              </span>
+            </Button>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div>
+        <h2 class="text-2xl glow-hover text-left mt-4 mb-4">Direct Contact</h2>
+
+        <div class="flex justify-start gap-6">
+          <div>
+            <Button
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com"
+            >
+              <span class="flex items-center gap-2">
+                <img src="/icons/gmail-svg.svg" alt="Gmail" class="w-8 h-8" />
+                Gmail
+              </span>
+            </Button>
+          </div>
+
+          <div>
+            <Button href="https://t.me/Spades_Of_Ace">
+              <span class="flex items-center gap-2">
+                <img src="/icons/telegram-svg.svg" alt="Telegram" class="w-8 h-8" />
+                Telegram
+              </span>
+            </Button>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+            <div>
+        <h2 class="text-2xl glow-hover text-left mt-4 mb-4">Direct Contact</h2>
+
+        <div class="flex justify-start gap-6">
+          <div>
+            <Button
+              href="https://www.facebook.com/Spade.0f.ace/"
+            >
+              <span class="flex items-center gap-2">
+                <img src="/icons/facebook-svg.svg" alt="Facebook" class="w-8 h-8" />
+                Facebook
+              </span>
+            </Button>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </section>
+</GlassSection>

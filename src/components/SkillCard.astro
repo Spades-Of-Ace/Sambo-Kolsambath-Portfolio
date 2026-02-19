@@ -1,0 +1,15 @@
+---
+const { title, description, href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="skill-card">
+  <h4 class="text-2xl font-semibold mb-3 glow-hover">
+    {title}
+  </h4>
+
+  <p
+    class="text-white/70 leading-[1.9] paragraph glow-hover text-justify text-sm"
+  >
+    {description}
+  </p>
+</a>
