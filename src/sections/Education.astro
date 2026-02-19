@@ -5,9 +5,9 @@ import GlassSection from '../components/GlassSection.astro';
 <GlassSection>
   <section>
     <div>
-      <h2 class="text-5xl glow font-semibold section-title">Education</h2>
+      <h2 class="text-3xl md:text-5xl glow font-semibold section-title">Education</h2>
 
-      <div class="flex justify-between items-start gap-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 py-8">
         <!-- LEFT CONTENT -->
         <div class="flex-1">
           <div>
@@ -15,8 +15,7 @@ import GlassSection from '../components/GlassSection.astro';
               <a
                 href="https://www.aupp.edu.kh/"
                 target="_blank"
-                rel="noopener
-            noreferrer"
+                rel="noopenernoreferrer"
                 class="hover:underline"
               >
                 American University of Phnom Penh
@@ -38,7 +37,7 @@ import GlassSection from '../components/GlassSection.astro';
         </div>
 
         <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo">
+        <div class="shrink-0 logo hidden md:block">
           <img
             src="/logos/aupp-logo.png"
             alt="AUPP Logo"
@@ -47,7 +46,7 @@ import GlassSection from '../components/GlassSection.astro';
         </div>
       </div>
 
-      <div class="flex justify-between items-start gap-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 py-8">
         <!-- LEFT CONTENT -->
         <div class="flex-1">
           <div>
@@ -55,8 +54,7 @@ import GlassSection from '../components/GlassSection.astro';
               <a
                 href="https://www.rupp.edu.kh/ifl/"
                 target="_blank"
-                rel="noopener
-            noreferrer"
+                rel="noopener noreferrer"
                 class="hover:underline"
               >
                 Institute of Foreign Languages
@@ -77,7 +75,7 @@ import GlassSection from '../components/GlassSection.astro';
         </div>
 
         <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo">
+        <div class="shrink-0 logo hidden md:block">
           <img
             src="/logos/ifl-logo.png"
             alt="IFL Logo"

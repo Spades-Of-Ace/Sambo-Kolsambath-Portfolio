@@ -404,8 +404,11 @@ main {
 ========================= */
 
 .skill-card {
-  display: block;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1.8rem;
   border-radius: 1rem;
 
   background: linear-gradient(
@@ -416,17 +419,35 @@ main {
 
   border: 1px solid rgba(255, 255, 255, 0.15);
 
-  transition: 0.3s ease;
+  backdrop-filter: blur(12px);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
 
+/* Hover Effect */
 .skill-card:hover {
-  border-color: white;
-  box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.2),
-    0 0 40px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
 
-  transform: translateY(-4px);
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 255, 255, 0.08);
+
+  background: linear-gradient(
+    145deg,
+    rgba(40, 40, 40, 0.9),
+    rgba(15, 15, 15, 0.9)
+  );
+
+  transform: translateY(-6px);
 }
+
 /* =========================
    SKILL GRID
 ========================= */
@@ -434,7 +455,8 @@ main {
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.8rem;
+  align-items: stretch;
 }
 
 /* Tablet */
