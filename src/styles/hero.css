@@ -168,7 +168,7 @@ b,
   justify-content: center;
   gap: 0.45rem;
   line-height: 1;
-  transform: translateY(var(--button-label-y, 1.2rem));
+  transform: translateY(var(--button-label-y, 0.5rem));
 }
 
 .glass-button:hover {
