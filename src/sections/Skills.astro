@@ -1,131 +1,136 @@
 ---
-import GlassSection from '../components/GlassSection.astro';
-import SkillCard from '../components/SkillCard.astro';
+const skillGroups = [
+  {
+    number: '01',
+    title: 'Core Stack',
+    icon: '/svg%20icon/stack-fill.svg',
+    skills: ['Astro', 'React', 'Tailwind CSS', 'Next.js', 'TypeScript'],
+  },
+  {
+    number: '02',
+    title: 'Supporting Stack',
+    icon: '/svg%20icon/puzzle-piece-fill.svg',
+    skills: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    number: '03',
+    title: 'Tools',
+    icon: '/svg%20icon/wrench-fill.svg',
+    skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Figma'],
+  },
+  {
+    number: '04',
+    title: 'Programming Background',
+    icon: '/svg%20icon/atom-fill.svg',
+    skills: ['Python', 'Java', 'C++'],
+  },
+];
+
+const orbitNodes = [
+  {
+    className: 'node-frontend',
+    icon: '/svg%20icon/atom-fill.svg',
+    title: 'Frontend Development',
+    description:
+      'Astro, React, Tailwind CSS, Next.js, and TypeScript for structured interface development.',
+  },
+  {
+    className: 'node-support',
+    icon: '/svg%20icon/stack-fill.svg',
+    title: 'Supporting Stack',
+    description:
+      'HTML, CSS, and JavaScript foundations for semantic, responsive, interactive web experiences.',
+  },
+  {
+    className: 'node-tools',
+    icon: '/svg%20icon/wrench-fill.svg',
+    title: 'Tools',
+    description:
+      'Git, GitHub, VS Code, Docker, and Figma for building, testing, designing, and shipping.',
+  },
+  {
+    className: 'node-programming',
+    icon: '/svg%20icon/puzzle-piece-fill.svg',
+    title: 'Programming Background',
+    description:
+      'Python, Java, and C++ experience that supports problem solving beyond the browser.',
+  },
+];
 ---
 
-<GlassSection>
-  <section>
-    <div>
-      <h1 class="text-5xl glow font-semibold section-title">Skills</h1>
+<section class="skills-page" aria-labelledby="skills-title">
+  <div class="skills-grid-overlay" aria-hidden="true"></div>
 
-      <div class="py-6">
-        <h2 class="glow-hover text-2xl mt-2 mb-4">Core Stacks</h2>
-
-        <div class="skill-grid">
-          <SkillCard
-            title="Astro"
-            description="Modern static-first framework for building fast, scalable web applications with component-based architecture and optimized performance."
-            href="https://astro.build"
-          />
-
-          <SkillCard
-            title="React"
-            description="Component-based JavaScript library for building dynamic, interactive user interfaces with reusable and maintainable structure."
-            href="https://react.dev/"
-          />
-
-          <SkillCard
-            title="Tailwind CSS"
-            description="Utility-first CSS framework for rapidly building responsive and consistent user interfaces with minimal custom styling."
-            href="https://tailwindcss.com/"
-          />
-
-          <SkillCard
-            title="Next.js"
-            description="Production-ready React framework enabling server-side rendering, static generation, and scalable full-stack web applications."
-            href="https://nextjs.org/"
-          />
-
-          <SkillCard
-            title="TypeScript"
-            description="Strongly typed superset of JavaScript that improves code reliability, maintainability, and developer productivity."
-            href="https://www.typescriptlang.org/"
-          />
-        </div>
-      </div>
-      <!--  -->
-      <div class="py-6">
-        <h2 class="glow-hover text-2xl mt-8 mb-4">Supporting Stack</h2>
-
-        <div class="skill-grid">
-          <SkillCard
-            title="HTML"
-            description="Standard markup language used to structure web content and define semantic layout for accessible interfaces."
-            href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-          />
-
-          <SkillCard
-            title="CSS"
-            description="Styling language for designing responsive layouts, visual hierarchy, and structured user interfaces."
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-          />
-
-          <SkillCard
-            title="JavaScript"
-            description="Core scripting language for building interactive, dynamic, and client-side web functionality."
-            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          />
-        </div>
-      </div>
-      <!--  -->
-      <div class="py-6">
-        <h2 class="glow-hover text-2xl mt-8 mb-4">Tools</h2>
-        <div class="skill-grid">
-          <SkillCard
-            title="Git"
-            description="Distributed version control system used to manage source code, track changes, and collaborate efficiently.."
-            href="https://git-scm.com/"
-          />
-
-          <SkillCard
-            title="GitHub"
-            description="Cloud-based platform for hosting Git repositories, managing collaboration, and maintaining project workflows."
-            href="https://github.com/"
-          />
-
-          <SkillCard
-            title="VS Code"
-            description="Lightweight and extensible code editor optimized for modern web development workflows."
-            href="https://code.visualstudio.com/"
-          />
-
-          <SkillCard
-            title="Docker"
-            description="Containerization platform used to package and deploy applications in consistent, isolated environments."
-            href="https://www.docker.com/"
-          />
-
-          <SkillCard
-            title="Figma"
-            description="Collaborative interface design tool used for UI design, prototyping, and design-to-development workflows."
-            href="https://www.figma.com/"
-          />
-        </div>
-      </div>
-      <!--  -->
-      <div class="py-6">
-        <h2 class="glow-hover text-2xl mt-8 mb-4">Programming Background</h2>
-
-        <div class="skill-grid">
-          <SkillCard
-            title="Python"
-            description="High-level programming language used for scripting, automation, and foundational backend logic."
-            href="https://www.python.org/"
-          />
-
-          <SkillCard
-            title="Java"
-            description="Object-oriented programming language commonly used for enterprise applications and backend systems."
-            href="https://www.java.com/"
-          />
-
-          <SkillCard
-            title="C++"
-            description="Compiled programming language focused on performance and system-level application development."
-            href="https://isocpp.org/"
-          />
-        </div>
-      </div>
+  <div class="skills-hero">
+    <div class="skills-copy">
+      <h1 id="skills-title" class="skills-heading">
+        <span>The System</span>
+        <span>Behind</span>
+        <span class="accent">The Work.</span>
+      </h1>
+      <div class="skills-rule" aria-hidden="true"></div>
+      <p>
+        A collection of technologies, tools, and knowledge that power the
+        solutions I design and build.
+      </p>
     </div>
-  </section>
-</GlassSection>
+
+    <div class="system-map" aria-label="Technology constellation system map">
+      <div class="system-orbits" aria-hidden="true"></div>
+      <div class="system-core">
+        <span>Building</span>
+        <span>Digital</span>
+        <span>Solutions</span>
+      </div>
+
+      {
+        orbitNodes.map((node) => (
+          <button class:list={['orbit-node', node.className]} type="button">
+            <span class="node-icon">
+              <img src={node.icon} alt="" aria-hidden="true" />
+            </span>
+            <span class="node-label">{node.title}</span>
+            <span class="node-detail">
+              <strong>{node.title}</strong>
+              <span>{node.description}</span>
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <aside class="learning-panel" aria-label="Learning note">
+      <strong>
+        <img src="/svg%20icon/sparkle-fill.svg" alt="" aria-hidden="true" />
+        Always Learning
+      </strong>
+      <p>Technology evolves every day. So do I.</p>
+    </aside>
+  </div>
+
+  <div class="skill-system-cards">
+    {
+      skillGroups.map((group) => (
+        <article class="skill-system-card">
+          <div class="skill-card-head">
+            <div>
+              <span>{group.number}</span>
+              <h2>{group.title}</h2>
+            </div>
+            <i aria-hidden="true">
+              <img src={group.icon} alt="" />
+            </i>
+          </div>
+
+          <ul>
+            {group.skills.map((skill) => (
+              <li>
+                <span>{skill}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,142 @@
+---
+const traits = [
+  {
+    icon: '/svg%20icon/lightning-fill.svg',
+    title: 'Curious',
+    text: 'Always exploring and learning.',
+  },
+  {
+    icon: '/svg%20icon/crosshair-simple-fill.svg',
+    title: 'Focused',
+    text: 'Driven by clarity and purpose.',
+  },
+  {
+    icon: '/svg%20icon/users-fill.svg',
+    title: 'Collaborative',
+    text: 'Better solutions together.',
+  },
+  {
+    icon: '/svg%20icon/planet-fill.svg',
+    title: 'Impact Driven',
+    text: 'Building for users and communities.',
+  },
+];
+
+const infoItems = [
+  {
+    icon: '/svg%20icon/crosshair-fill.svg',
+    title: 'Focus',
+    lines: ['Frontend Development', 'UX / UI Design', 'Digital Solutions'],
+  },
+  {
+    icon: '/svg%20icon/map-pin-fill.svg',
+    title: 'Based In',
+    lines: ['Phnom Penh,', 'Cambodia'],
+  },
+  {
+    icon: '/svg%20icon/sparkle-fill.svg',
+    title: 'Interests',
+    lines: ['AI & Data', 'UX Research', 'Product Design'],
+  },
+  {
+    icon: '/svg%20icon/planet-fill.svg',
+    title: 'Vision',
+    lines: ['Using technology', 'to create solutions', 'that matter.'],
+  },
+];
+
+const education = [
+  {
+    number: '01',
+    logo: '/logos/aupp-logo.png',
+    school: 'American University of Phnom Penh',
+    degree: 'Bachelor of Information Communication Technology',
+    graduated: 'Graduated 2025',
+  },
+  {
+    number: '02',
+    logo: '/logos/ifl-logo.png',
+    school: 'Institute of Foreign Languages',
+    degree: 'Bachelor of English',
+    graduated: 'Graduated 2026',
+  },
+];
+---
+
+<section class="about-page" aria-labelledby="about-title">
+  <div class="about-grid-overlay" aria-hidden="true"></div>
+
+  <div class="about-shell">
+    <div class="about-intro">
+      <h1 id="about-title" class="about-heading">
+        <span>Beyond</span>
+        <span>The</span>
+        <span class="accent">Code.</span>
+      </h1>
+
+      <div class="about-rule" aria-hidden="true"></div>
+
+      <p class="about-copy">
+        I'm Sambo Kolsambath - <strong>Ace</strong>. A developer, designer, and
+        problem solver who loves building meaningful digital experiences and
+        turning ideas into real-world impact.
+      </p>
+
+      <div class="identity-traits" aria-label="Personal qualities">
+        {
+          traits.map((trait) => (
+            <article class="identity-trait">
+              <i aria-hidden="true">
+                <img src={trait.icon} alt="" />
+              </i>
+              <strong>{trait.title}</strong>
+              <p>{trait.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <aside class="about-info-rail" aria-label="Personal details">
+      {
+        infoItems.map((item) => (
+          <article class="about-info-item">
+            <i aria-hidden="true">
+              <img src={item.icon} alt="" />
+            </i>
+            <div>
+              <strong>{item.title}</strong>
+              {item.lines.map((line) => (
+                <span>{line}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </aside>
+
+    <div class="education-panel">
+      <h2>Education</h2>
+
+      <div class="education-cards">
+        {
+          education.map((item) => (
+            <article class="education-card">
+              <div class="education-number">
+                <span>{item.number}</span>
+              </div>
+
+              <img src={item.logo} alt={`${item.school} logo`} />
+
+              <div>
+                <h3>{item.school}</h3>
+                <p>{item.degree}</p>
+                <small>{item.graduated}</small>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,169 +1,113 @@
 ---
-import Button from '../components/Button.astro';
-import GlassSection from '../components/GlassSection.astro';
+const experiences = [
+  {
+    number: '01',
+    logo: '/logos/mptc-logo.png',
+    logoAlt: 'MPTC Logo',
+    title: 'Junior Front-End Developer',
+    org: 'Ministry of Post and Telecommunications',
+    period: 'May 2025 - March 2026',
+    year: '2025',
+    description:
+      'Contributed to the development and maintenance of national digital platforms, implementing responsive, component-based interfaces, integrating backend APIs, and maintaining structured frontend architecture across production systems.',
+    tags: [
+      'Frontend Development',
+      'Responsive UI',
+      'API Integration',
+      'Government Systems',
+    ],
+  },
+  {
+    number: '02',
+    logo: '/logos/mptc-logo.png',
+    logoAlt: 'MPTC Logo',
+    title: 'UX/UI Intern',
+    org: 'Ministry of Post and Telecommunications',
+    period: 'May 2024 - May 2025',
+    year: '2024',
+    description:
+      'Contributed to UX/UI refinement and digital content development for government platforms, supporting interface consistency, bilingual content structure, accessibility, and alignment with government design standards.',
+    tags: ['UX/UI', 'Design Systems', 'Digital Content', 'Government Platforms'],
+  },
+  {
+    number: '03',
+    logo: '/logos/csc-logo2.png',
+    logoAlt: 'CSC Logo',
+    title: 'Social Media & Website Officer',
+    org: "Children's Surgical Centre (CSC)",
+    period: 'May 2023 - December 2025',
+    year: '2023',
+    description:
+      "Managed and structured content across CSC's website and social media channels, helping communicate the organization's mission, programs, and impact while maintaining consistent branding and accessible digital communication.",
+    tags: [
+      'Web Content',
+      'Social Media',
+      'Digital Communication',
+      'Content Management',
+    ],
+  },
+  {
+    number: '04',
+    logo: '/logos/kakvei-logo2.png',
+    logoAlt: 'Kakvei Logo',
+    title: 'Data Organizer',
+    org: 'Kakvei',
+    period: 'February 2023 - December 2025',
+    year: '2023',
+    description:
+      'Organized and validated Khmer-language datasets for AI model training, focusing on linguistic accuracy, structural consistency, data integrity, and quality control for large-scale dataset development.',
+    tags: ['AI Data', 'Khmer Language', 'Data Validation', 'Quality Control'],
+  },
+];
 ---
 
-<GlassSection>
-  <section class="experience-container">
-    <div>
-      <h1 class="text-3xl md:text-5xl glow font-semibold section-title">
-        Experience
+<section class="experience-page" aria-labelledby="experience-title">
+  <div class="experience-shell">
+    <div class="experience-copy">
+      <h1 id="experience-title" class="experience-heading">
+        <span>From Design</span>
+        <span>To Digital</span>
+        <span class="outline">Systems.</span>
       </h1>
-
-      <!--MPTC -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <div>
-            <h2 class="glow-hover text-2xl mb-4">
-              <a
-                href="https://mptc.gov.kh/"
-                target="_blank"
-                rel="noopenernoreferrer"
-                class="hover:underline"
-              >
-                Ministry of Post and Telecommunications
-              </a>
-            </h2>
-          </div>
-
-          <div class="mb-4">
-            <h3 class="glow-hover text-lg mt-2 mb-4">
-              Junior Front-End Developer
-            </h3>
-
-            <h4 class="text-base glow-hover mt-2 mb-4">May 2025 – Present</h4>
-
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              Transitioned into a frontend engineering role, contributing to the
-              development and maintenance of national digital platforms
-              including EventKH and DSDP. Implement responsive, component-based
-              interfaces, integrate backend APIs, and ensure cross-device
-              compatibility while maintaining scalable and structured frontend
-              architecture.
-            </p>
-          </div>
-          <div class="mb-4">
-            <h3 class="glow-hover text-lg mt-2 mb-4">UX/UI Intern</h3>
-
-            <h4 class="text-base glow-hover mt-2 mb-4">May 2024 – May 2025</h4>
-
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              Contributed to UX/UI design refinement and digital content
-              development for national government platforms. Supported interface
-              consistency aligned with the Rachana Government Design System and
-              assisted in structuring bilingual web content to ensure clarity,
-              accessibility, and usability across ministries.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/mptc-logo.png"
-            alt="MPTC Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      <!--CSC -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <div class="">
-            <h2 class="glow-hover text-2xl mb-4">
-              <a
-                href="https://csc.org/"
-                target="_blank"
-                rel="noopener
-            noreferrer"
-                class="hover:underline"
-              >
-                Children’s Surgical Centre (CSC)
-              </a>
-            </h2>
-          </div>
-
-          <h3 class="glow-hover text-lg mt-2 mb-4">
-            Social Media & Website Officer
-          </h3>
-          <div>
-            <h4 class="text-base glow-hover mt-2 mb-4">
-              May 2023 – December 2025
-            </h4>
-
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              Managed and structured content for the official CSC website and
-              social media channels. Developed engaging digital content to
-              effectively communicate CSC’s mission, programs, and impact to a
-              global audience. Ensured consistent branding and messaging across
-              all online platforms while optimizing content for accessibility
-              and user engagement.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/csc-logo2.png"
-            alt="CSC Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      <!-- Kakvei -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <div>
-            <h2 class="glow-hover text-2xl mb-4">
-              <a
-                href="https://kakvei.tech/"
-                target="_blank"
-                rel="noopener
-            noreferrer"
-                class="hover:underline"
-              >
-                Kakvei
-              </a>
-            </h2>
-          </div>
-
-          <h3 class="glow-hover text-lg mt-2 mb-4">Data Organizer</h3>
-          <div class="mb-4">
-            <h4 class="text-base glow-hover mt-2 mb-4">
-              February 2023 – December 2025
-            </h4>
-
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              Organize and validate Khmer-language datasets for AI model
-              training, ensuring linguistic accuracy, structural consistency,
-              and overall data integrity. Support quality control processes to
-              maintain reliable large-scale dataset development.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/kakvei-logo2.png"
-            alt="Kakvei Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-      <!--  -->
+      <div class="section-rule" aria-hidden="true"></div>
+      <p class="experience-lede">
+        A journey shaped by design, communication, data, and development,
+        evolving toward building structured digital experiences and systems.
+      </p>
     </div>
-  </section>
-</GlassSection>
+
+    <div class="timeline-wrap">
+      <div class="timeline-arc" aria-hidden="true"></div>
+
+      <ol class="experience-list" aria-label="Experience timeline">
+        {
+          experiences.map((item) => (
+            <li class="experience-item">
+              <div class="timeline-node" aria-hidden="true">
+                <span>{item.number}</span>
+              </div>
+
+              <div class="experience-logo">
+                <img src={item.logo} alt={item.logoAlt} loading="lazy" />
+              </div>
+
+              <article class="experience-card">
+                <div class="experience-main">
+                  <h2>{item.title}</h2>
+                  <p class="org">{item.org}</p>
+                  <p class="period">{item.period}</p>
+                  <p class="description">{item.description}</p>
+                  <p class="tags">{item.tags.join(' / ')}</p>
+                </div>
+                <div class="year-marker" aria-hidden="true">
+                  <span></span>
+                  <strong>{item.year}</strong>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

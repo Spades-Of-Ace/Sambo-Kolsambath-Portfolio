@@ -1,40 +1,55 @@
 ---
-import GlassSection from '../components/GlassSection.astro';
+import '../styles/hero.css';
+import HeroActions from '../components/HeroActions.astro';
 ---
 
-<GlassSection>
-  <section>
-    <div>
-      <h1
-        class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-[2px] md:tracking-[8px] text-center hero-title glow leading-tight"
-      >
-        Welcome to the Event Horizon
+<section class="hero-section" aria-labelledby="home-hero-title">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="intro animate-on-scroll">
+        <div class="hero-sub">WELCOME TO THE EVENT HORIZON</div>
+      </div>
+
+      <h1 id="home-hero-title" class="hero-heading animate-on-scroll">
+        <span class="line solid">I BUILD</span>
+        <span class="line solid">DIGITAL</span>
+        <span class="line outline">EXPERIENCES</span>
       </h1>
 
-      <div class="mt-6 text-center">
-        <p class="paragraph text-white/70 glow-hover">
-          Frontend Developer specializing in scalable, structured web
-          applications with hands-on experience contributing to national
-          government digital platforms.
-        </p>
-
-        <p class="paragraph text-white/70 glow-hover">
-          Graduate in Information Communication Technology from the American
-          University of Phnom Penh, with a strong foundation in software
-          architecture, system logic, and maintainable frontend development.
-        </p>
-
-        <p class="paragraph text-white/70 glow-hover">
-          Analytical and detail-oriented, with experience working in production
-          environments under structured design systems. Adaptable in fast-paced
-          settings, capable of delivering clean, scalable solutions under tight
-          timelines and evolving requirements.
-        </p>
-
-        <p class="paragraph text-white/70 glow-hover">
-          My name is Sambo Kolsambath, but you can call me Ace.
+      <div class="hero-desc animate-on-scroll">
+        <div class="decor" aria-hidden="true"></div>
+        <p>
+          Front-End Developer building structured, scalable, and user-focused
+          digital experiences.
         </p>
       </div>
+
+      <HeroActions />
     </div>
-  </section>
-</GlassSection>
+
+    <aside class="info-panel animate-on-scroll" aria-label="Profile summary">
+      <span class="corner-tr" aria-hidden="true"></span>
+      <span class="corner-bl" aria-hidden="true"></span>
+
+      <div class="info-group">
+        <div class="label">BASED IN</div>
+        <div>Phnom Penh,<br />Cambodia</div>
+      </div>
+
+      <div class="info-group">
+        <div class="label">CURRENT ROLE</div>
+        <div>Front-End Developer</div>
+        <div>UX/UI Designer</div>
+      </div>
+
+      <div class="info-group">
+        <div class="label">FOCUS</div>
+        <div>
+          Frontend Development<br />
+          UX/UI Design<br />
+          Digital Systems
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

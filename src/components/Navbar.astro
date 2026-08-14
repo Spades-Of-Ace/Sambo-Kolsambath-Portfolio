@@ -1,0 +1,91 @@
+---
+const pathname = Astro.url.pathname;
+const onHome = pathname === '/';
+const navHref = (href: string) =>
+  onHome && href !== '/' ? `#${href.replace('/', '')}` : href;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">ACE_</a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href={onHome ? '#home' : '/'} class:list={[{ active: isActive('/') }]}>
+        HOME
+      </a>
+      <a
+        href={navHref('/experience')}
+        class:list={[{ active: isActive('/experience') }]}
+      >
+        EXPERIENCE
+      </a>
+      <a
+        href={navHref('/projects')}
+        class:list={[{ active: isActive('/projects') }]}
+      >
+        PROJECTS
+      </a>
+      <a
+        href={navHref('/skills')}
+        class:list={[{ active: isActive('/skills') }]}
+      >
+        SKILLS
+      </a>
+      <a href={navHref('/about')} class:list={[{ active: isActive('/about') }]}>
+        ABOUT
+      </a>
+      <a
+        href={navHref('/contact')}
+        class:list={[{ active: isActive('/contact') }]}
+      >
+        CONTACT
+      </a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="/contact" class="glass-button small">
+        <span class="button-label">LET'S CONNECT -></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('.site-header');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  const updateHeader = () => {
+    if (!header) return;
+
+    const currentScrollY = window.scrollY;
+    const scrollingDown = currentScrollY > lastScrollY;
+    const movedEnough = Math.abs(currentScrollY - lastScrollY) > 8;
+
+    header.classList.toggle('is-scrolled', currentScrollY > 24);
+
+    if (currentScrollY < 16) {
+      header.classList.remove('is-hidden');
+    } else if (movedEnough && scrollingDown) {
+      header.classList.add('is-hidden');
+    } else if (movedEnough) {
+      header.classList.remove('is-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+</script>

@@ -1,157 +1,166 @@
 ---
-import GlassSection from '../components/GlassSection.astro';
+const projects = [
+  {
+    number: '01',
+    eyebrow: 'Government Digital Platform',
+    title: 'Digital Skills Development Program',
+    shortName: 'DSDP',
+    type: 'Digital Skills Development Program',
+    url: 'https://dsdp.gov.kh/en/',
+    displayUrl: 'dsdp.gov.kh',
+    logo: '/logos/dsdp-logo.png',
+    logoAlt: 'DSDP Logo',
+    screenshot: '/images/DSDP screenshot.png',
+    screenshotAlt: 'DSDP homepage screenshot',
+    overview:
+      "The Digital Skills Development Program (DSDP) is a national initiative focused on strengthening digital literacy and supporting Cambodia's digital transformation efforts.",
+    contribution: [
+      "As part of the frontend team, I contributed to building structured, responsive interfaces aligned with the government's design system. I implemented reusable UI components, integrated backend-managed content into dynamic layouts, and ensured consistency across multiple screen sizes.",
+      'The work focused on long-term maintainability, scalability, and clean frontend architecture within a government production environment.',
+    ],
+    tags: [
+      'Frontend Development',
+      'Responsive UI',
+      'Reusable Components',
+      'Content Integration',
+    ],
+  },
+  {
+    number: '02',
+    eyebrow: 'Government Event Platform',
+    title: 'EventKH',
+    shortName: 'EventKH',
+    type: 'EventKH',
+    url: 'https://event.gov.kh/en',
+    displayUrl: 'eventkh.gov.kh',
+    logo: '/logos/eventkh-logo.png',
+    logoAlt: 'EventKH Logo',
+    screenshot: '/images/EventKH screenshot.png',
+    screenshotAlt: 'EventKH platform screenshot',
+    overview:
+      'EventKH is a government-operated event platform that enables authorized ministry officials to publish official events while allowing the public to browse and register online.',
+    contribution: [
+      'I contributed to implementing structured frontend layouts for event listings, detail pages, and registration flows.',
+      'The work involved building modular UI components using Astro and Tailwind CSS, integrating dynamic event data from backend systems, and ensuring responsive behavior across devices. The emphasis was on clarity, consistency, and adherence to government design standards within a production-scale system.',
+    ],
+    tags: ['Astro', 'Tailwind CSS', 'Responsive UI', 'Backend Integration'],
+  },
+  {
+    number: '03',
+    eyebrow: 'Government Digital Workspace',
+    title: 'Chaktomuk Digital Workspace',
+    shortName: 'Chaktomuk',
+    type: 'Digital Workspace',
+    url: 'https://chaktomuk.gov.kh/en',
+    displayUrl: 'chaktomuk.gov.kh',
+    logo: '/logos/ctm-logo.png',
+    logoAlt: 'Chaktomuk Logo',
+    screenshot: '/images/Chaktomuk screenshot.png',
+    screenshotAlt: 'Chaktomuk Digital Workspace screenshot',
+    overview:
+      'Chaktomuk Digital Workspace is an internal government platform designed to support structured digital workflows and cross-ministry coordination.',
+    contribution: [
+      'Contributed to quality assurance processes by testing interface flows and validating system behavior before deployment.',
+      'I also assisted in reviewing and correcting Khmer-language translations to ensure linguistic accuracy, clarity, and consistency across internal modules.',
+    ],
+    tags: [
+      'Quality Assurance',
+      'Interface Testing',
+      'Workflow Validation',
+      'Khmer Language',
+    ],
+  },
+];
 ---
 
-<GlassSection>
-  <section>
+<section class="projects-page" aria-labelledby="projects-title">
+  <div class="projects-grid-overlay" aria-hidden="true"></div>
+
+  <header class="projects-hero">
     <div>
-      <h2 class="text-3xl md:text-5xl glow font-semibold section-title">
-        Projects
-      </h2>
-
-      <!-- DSSDP -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <h2 class="glow-hover text-2xl mb-4">
-            <a
-              href="https://dsdp.gov.kh/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:underline"
-            >
-              Digital Skills Development Program (DSDP)
-            </a>
-          </h2>
-          <div class="mb-4">
-            <h4 class="glow-hover text-lg mt-2 mb-4">Overview</h4>
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              The Digital Skills Development Program (DSDP) is a national
-              initiative focused on strengthening digital literacy and
-              supporting Cambodia’s digital transformation efforts.
-            </p>
-          </div>
-          <div class="mb-4">
-            <h4 class="glow-hover text-lg mt-2 mb-4">Contributions</h4>
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              As part of the frontend team, I contributed to building
-              structured, responsive interfaces aligned with the government’s
-              design system. I implemented reusable UI components, integrated
-              backend-managed content into dynamic layouts, and ensured
-              consistency across multiple screen sizes. The focus was long-term
-              maintainability, scalability, and clean frontend architecture
-              within a government production environment.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/dsdp-logo.png"
-            alt="DSDP Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      <!-- EventKH -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <h2 class="glow-hover text-2xl mb-4">
-            <a
-              href="https://event.gov.kh/en"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:underline"
-            >
-              EventKH
-            </a>
-          </h2>
-          <div class="mb-4">
-            <h4 class="glow-hover text-lg mt-2 mb-4">Overview</h4>
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              EventKH is a government-operated event platform that enables
-              authorized ministry officials to publish official events while
-              allowing the public to browse and register online.
-            </p>
-          </div>
-          <div class="mb-4">
-            <h4 class="glow-hover text-lg mt-2 mb-4">Contributions</h4>
-            <p class="paragraph glow-hover mb-4 leading-[1.9] text-justify">
-              I contributed to implementing structured frontend layouts for
-              event listings, detail pages, and registration flows. The work
-              involved building modular UI components using Astro and Tailwind
-              CSS, integrating dynamic event data from backend systems, and
-              ensuring responsive behavior across devices. The emphasis was on
-              clarity, consistency, and adherence to government design standards
-              within a production-scale system.
-            </p>
-          </div>
-        </div>
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/eventkh-logo.png"
-            alt="EventKH Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      <!-- CTM -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 py-8"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="flex-1">
-          <h2 class="glow-hover text-2xl mb-4">
-            <a
-              href="https://chaktomuk.gov.kh/en"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:underline"
-            >
-              Chaktomuk Platform
-            </a>
-          </h2>
-
-          <div class="mb-6">
-            <h4 class="glow-hover text-lg mb-4">Overview</h4>
-            <p class="paragraph glow-hover leading-[1.9] text-justify">
-              Chaktomuk Digital Workspace is an internal government platform
-              designed to support structured digital workflows and
-              cross-ministry coordination.
-            </p>
-          </div>
-
-          <div>
-            <h4 class="glow-hover text-lg mb-4">Contributions</h4>
-            <p class="paragraph glow-hover leading-[1.9] text-justify">
-              Contributed to quality assurance processes by testing interface
-              flows and validating system behavior before deployment. Assisted
-              in reviewing and correcting Khmer-language translations to ensure
-              linguistic accuracy, clarity, and consistency across internal
-              modules.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT LOGO -->
-        <div class="shrink-0 logo hidden md:block">
-          <img
-            src="/logos/ctm-logo.png"
-            alt="Chaktomuk Logo"
-            class="w-28 h-auto opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      <!--  -->
+      <h1 id="projects-title" class="projects-heading">
+        <span>Things I've</span>
+        <span>Helped</span>
+        <span class="outline">Build.</span>
+      </h1>
+      <p class="projects-intro">
+        A selection of government digital platforms I've contributed to across
+        frontend development, quality assurance, and digital workflows.
+      </p>
     </div>
-  </section>
-</GlassSection>
+  </header>
+
+  <div class="project-stack">
+    {
+      projects.map((project, index) => (
+        <article
+          class:list={['project-row', { 'is-reversed': index % 2 === 1 }]}
+        >
+          <div class="project-copy">
+            <span class="project-index" aria-hidden="true">
+              {project.number}
+            </span>
+            <p class="project-eyebrow">
+              {project.number} / {project.eyebrow}
+            </p>
+            <h2>{project.title}</h2>
+            <p class="project-type">{project.type}</p>
+
+            <div class="project-section">
+              <h3>Overview</h3>
+              <p>{project.overview}</p>
+            </div>
+
+            <div class="project-section">
+              <h3>Contribution</h3>
+              {project.contribution.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+
+            <ul class="project-tags" aria-label={`${project.title} tags`}>
+              {project.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-cta">View Live Project -></a
+            >
+          </div>
+
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-frame"
+            aria-label={`View ${project.title}`}
+          >
+            <div class="frame-topline">
+              <span><i></i> Live Platform</span>
+              <span>{project.displayUrl} -></span>
+            </div>
+
+            <div class="project-preview">
+              <div class="preview-browser">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <img
+                src={project.screenshot}
+                alt={project.screenshotAlt}
+                class="project-screenshot"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="frame-footer">
+              <span>Project / {project.number}</span>
+              <span>Status / <strong>Live</strong></span>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>

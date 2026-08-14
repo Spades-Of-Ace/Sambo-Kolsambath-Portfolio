@@ -1,0 +1,17 @@
+---
+const { resumeHref = '/cv/Sambo-Kolsambath-Resume.pdf' } = Astro.props;
+---
+
+<div class="hero-actions">
+  <a href="/projects" class="glass-button primary">
+    <span class="button-label">
+      EXPLORE MY <span class="glow-word">WORK</span> ->
+    </span>
+  </a>
+  <a
+    href={resumeHref}
+    class="hero-link"
+    target="_blank"
+    rel="noopener noreferrer">VIEW RESUME -></a
+  >
+</div>

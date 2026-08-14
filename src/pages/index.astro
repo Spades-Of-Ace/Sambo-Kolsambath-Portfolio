@@ -1,30 +1,66 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SpaceBackground from '../components/SpaceBackground.astro';
 import Footer from '../components/Footer.astro';
-import ScrollAnimation from '../components/ScrollAnimation.jsx';
-
+import Navbar from '../components/Navbar.astro';
+import SocialRail from '../components/SocialRail.astro';
+import About from '../sections/About.astro';
+import Contact from '../sections/Contact.astro';
+import Experience from '../sections/Experience.astro';
 import Hero from '../sections/Hero.astro';
-import Education from '../sections/Education.astro';
 import Projects from '../sections/Projects.astro';
 import Skills from '../sections/Skills.astro';
-import Personal from '../sections/Personal.astro';
-
 import '../styles/scene.css';
-import Experience from '../sections/Experience.astro';
+import '../styles/hero.css';
 ---
 
 <BaseLayout title="Homepage">
-  <SpaceBackground />
-  <ScrollAnimation client:load />
+  <Navbar />
+  <SocialRail />
 
-  <div class="relative z-10 text-white">
-    <Hero />
-    <Experience />
-    <Projects />
-    <Skills />
-    <Education />
-    <Personal />
+  <div class="journey-page relative z-10 text-white">
+    <section
+      id="home"
+      class="journey-panel is-active"
+      data-rail-label="LET'S BUILD SOMETHING GREAT"
+    >
+      <Hero />
+    </section>
+
+    <section
+      id="experience"
+      class="journey-panel"
+      data-rail-label="BUILDING DIGITAL EXPERIENCES"
+    >
+      <Experience />
+    </section>
+
+    <section
+      id="projects"
+      class="journey-panel"
+      data-rail-label="BUILDING DIGITAL EXPERIENCES"
+    >
+      <Projects />
+    </section>
+
+    <section
+      id="skills"
+      class="journey-panel"
+      data-rail-label="THE SYSTEM BEHIND THE WORK"
+    >
+      <Skills />
+    </section>
+
+    <section id="about" class="journey-panel" data-rail-label="BEYOND THE CODE">
+      <About />
+    </section>
+
+    <section
+      id="contact"
+      class="journey-panel"
+      data-rail-label="INITIATE CONTACT"
+    >
+      <Contact />
+    </section>
   </div>
 
   <Footer />

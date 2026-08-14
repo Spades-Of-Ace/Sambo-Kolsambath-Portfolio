@@ -1,0 +1,116 @@
+---
+const contactGroups = [
+  {
+    title: 'Professional',
+    icon: '/svg%20icon/briefcase-bold.svg',
+    links: [
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/sambo-kolsambath-76269a2a0/',
+        icon: '/svg%20icon/linkedin-logo-bold.svg',
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/Spades-Of-Ace',
+        icon: '/svg%20icon/github-logo-bold.svg',
+      },
+      {
+        label: 'Download Resume',
+        href: '/cv/Sambo-Kolsambath-Resume.pdf',
+        icon: '/icons/file-svg.svg',
+        download: true,
+      },
+    ],
+  },
+  {
+    title: 'Direct',
+    icon: '/svg%20icon/telegram-logo-bold.svg',
+    links: [
+      {
+        label: 'Email',
+        href: 'https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com',
+        icon: '/svg%20icon/envelope-simple-bold.svg',
+      },
+      {
+        label: 'Telegram',
+        href: 'https://t.me/Spades_Of_Ace',
+        icon: '/svg%20icon/telegram-logo-bold.svg',
+      },
+    ],
+  },
+  {
+    title: 'Social',
+    icon: '/svg%20icon/planet-fill.svg',
+    links: [
+      {
+        label: 'Facebook',
+        href: 'https://www.facebook.com/Spade.0f.ace/',
+        icon: '/svg%20icon/facebook-logo-bold.svg',
+      },
+    ],
+  },
+];
+---
+
+<section class="contact-page" aria-labelledby="contact-title">
+  <div class="contact-grid-overlay" aria-hidden="true"></div>
+
+  <div class="contact-shell">
+    <div class="contact-intro">
+      <h1 id="contact-title" class="contact-heading">
+        <span>Let's Build</span>
+        <span>Something</span>
+        <span class="accent">Beyond.</span>
+      </h1>
+
+      <div class="contact-rule" aria-hidden="true"></div>
+
+      <p>
+        You've reached the edge of the journey. If my work resonates with you,
+        let's connect and build something beyond the horizon.
+      </p>
+    </div>
+
+    <div class="contact-cards" aria-label="Contact options">
+      {
+        contactGroups.map((group) => (
+          <article class="contact-card">
+            <img src={group.icon} alt="" aria-hidden="true" class="contact-card-icon" />
+            <h2>{group.title}</h2>
+
+            <ul>
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target={link.download ? undefined : '_blank'}
+                    rel={link.download ? undefined : 'noopener noreferrer'}
+                    download={link.download ? true : undefined}
+                  >
+                    <span>
+                      <img src={link.icon} alt="" aria-hidden="true" />
+                      {link.label}
+                    </span>
+                    <i aria-hidden="true">{link.download ? 'v' : '>'}</i>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="contact-final-cta">
+      <span>Initiate Contact</span>
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Let's Connect
+        <i aria-hidden="true">></i>
+      </a>
+    </div>
+  </div>
+</section>

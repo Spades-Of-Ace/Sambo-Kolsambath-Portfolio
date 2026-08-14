@@ -1,0 +1,146 @@
+---
+const { label = "LET'S BUILD SOMETHING GREAT" } = Astro.props;
+---
+
+<aside class="social-rail" aria-hidden="false">
+  <div class="guide" aria-hidden="true"></div>
+
+  <div class="rail-marker" aria-hidden="true">
+    <span class="marker-dot" aria-hidden="true"></span>
+    <span class="marker-line" aria-hidden="true"></span>
+  </div>
+
+  <ul class="icons" role="list">
+    <li>
+      <a
+        href="https://github.com/Spades-Of-Ace"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon"
+        aria-label="GitHub"
+      >
+        <svg viewBox="0 0 24 24" fill="none"
+          ><path
+            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .26.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"
+            fill="currentColor"></path></svg
+        >
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="https://www.linkedin.com/in/sambo-kolsambath-76269a2a0"
+        class="social-icon"
+        aria-label="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none"
+          ><path
+            d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56V24H.22zM8.98 8h4.38v2.18h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.48 3.04 5.48 6.99V24h-4.6v-7.44c0-1.78-.03-4.08-2.49-4.08-2.5 0-2.88 1.95-2.88 3.96V24H8.98z"
+            fill="currentColor"></path></svg
+        >
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="mailto:kolsambathsambo@gmail.com"
+        class="social-icon"
+        aria-label="Email"
+      >
+        <svg viewBox="0 0 24 24" fill="none"
+          ><path
+            d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+            fill="currentColor"></path></svg
+        >
+      </a>
+    </li>
+  </ul>
+
+  <div class="rail-text">{label}</div>
+</aside>
+
+<script>
+  const rail = document.querySelector('.social-rail');
+  let railTicking = false;
+
+  const keepRailAboveFooter = () => {
+    const footer = document.querySelector('.footer');
+    if (!rail || !footer) return;
+
+    const footerTop = footer.getBoundingClientRect().top;
+    if (footerTop > window.innerHeight + 120) {
+      rail.style.setProperty('--rail-footer-lift', '0px');
+      railTicking = false;
+      return;
+    }
+
+    rail.style.setProperty('--rail-footer-lift', '0px');
+    const railBottom = rail.getBoundingClientRect().bottom;
+    const footerGap = 56;
+    const lift = Math.max(0, railBottom + footerGap - footerTop);
+
+    rail.style.setProperty('--rail-footer-lift', `${lift}px`);
+    railTicking = false;
+  };
+
+  const requestRailUpdate = () => {
+    if (!railTicking) {
+      window.requestAnimationFrame(keepRailAboveFooter);
+      railTicking = true;
+    }
+  };
+
+  window.addEventListener('load', keepRailAboveFooter);
+  keepRailAboveFooter();
+  window.addEventListener('scroll', requestRailUpdate, { passive: true });
+  window.addEventListener('resize', requestRailUpdate);
+
+  const railText = rail?.querySelector('.rail-text');
+  const journeyPanels = Array.from(document.querySelectorAll('.journey-panel'));
+
+  if (railText && journeyPanels.length) {
+    const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
+
+    const setActivePanel = (panel) => {
+      const label = panel.getAttribute('data-rail-label');
+      const panelId = panel.getAttribute('id');
+      if (label && railText.textContent !== label) {
+        railText.classList.add('is-changing');
+        window.setTimeout(() => {
+          railText.textContent = label;
+          railText.classList.remove('is-changing');
+        }, 120);
+      }
+
+      journeyPanels.forEach((item) => {
+        item.classList.toggle('is-active', item === panel);
+      });
+
+      if (panelId) {
+        navLinks.forEach((link) => {
+          const href = link.getAttribute('href');
+          link.classList.toggle('active', href === `#${panelId}`);
+        });
+      }
+    };
+
+    const panelObserver = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (active?.target) setActivePanel(active.target);
+      },
+      {
+        root: null,
+        threshold: [0.35, 0.5, 0.68],
+        rootMargin: '-18% 0px -18% 0px',
+      }
+    );
+
+    journeyPanels.forEach((panel) => panelObserver.observe(panel));
+  }
+</script>
