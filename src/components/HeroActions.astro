@@ -1,5 +1,5 @@
 ---
-const { resumeHref = '/cv/Sambo-Kolsambath-Resume.pdf' } = Astro.props;
+const { resumeHref = '/cv/Resume.pdf', cvHref = '/cv/Curriculum Vitae.pdf' } = Astro.props;
 ---
 
 <div class="hero-actions">
@@ -13,5 +13,11 @@ const { resumeHref = '/cv/Sambo-Kolsambath-Resume.pdf' } = Astro.props;
     class="hero-link"
     target="_blank"
     rel="noopener noreferrer">VIEW RESUME -></a
+  >
+  <a
+    href={cvHref}
+    class="hero-link"
+    target="_blank"
+    rel="noopener noreferrer">VIEW CV -></a
   >
 </div>
