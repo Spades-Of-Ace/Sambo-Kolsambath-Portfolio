@@ -39,7 +39,12 @@ const experiences = [
     year: '2024',
     description:
       'Contributed to UX/UI refinement and digital content development for government platforms, supporting interface consistency, bilingual content structure, accessibility, and alignment with government design standards.',
-    tags: ['UX/UI', 'Design Systems', 'Digital Content', 'Government Platforms'],
+    tags: [
+      'UX/UI',
+      'Design Systems',
+      'Digital Content',
+      'Government Platforms',
+    ],
   },
   {
     number: '04',
@@ -73,53 +78,60 @@ const experiences = [
 ];
 ---
 
-<section class="experience-page" aria-labelledby="experience-title">
-  <div class="experience-shell">
-    <div class="experience-copy">
-      <h1 id="experience-title" class="experience-heading">
-        <span>From Design</span>
-        <span>To Digital</span>
-        <span class="outline">Systems.</span>
-      </h1>
-      <div class="section-rule" aria-hidden="true"></div>
-      <p class="experience-lede">
-        A journey shaped by design, communication, data, and development,
-        evolving toward building structured digital experiences and systems.
+<section
+  id="experience"
+  data-nav-target="experience"
+  class="experience-section section-pad"
+  aria-labelledby="experience-title"
+>
+  <div class="experience-layout">
+    <header class="experience-intro" data-reveal="left">
+      <h2 id="experience-title" class="display-heading">
+        EVERY TURN.<br />A NEW <em>LEVEL.</em>
+      </h2><p class="section-description">
+        From communication and data to design and development. Every experience
+        has shaped how I build.
       </p>
-    </div>
-
-    <div class="timeline-wrap">
-      <div class="timeline-arc" aria-hidden="true"></div>
-
-      <ol class="experience-list" aria-label="Experience timeline">
-        {
-          experiences.map((item) => (
-            <li class="experience-item">
-              <div class="timeline-node" aria-hidden="true">
-                <span>{item.number}</span>
-              </div>
-
-              <div class="experience-logo">
-                <img src={item.logo} alt={item.logoAlt} loading="lazy" />
-              </div>
-
-              <article class="experience-card">
-                <div class="experience-main">
-                  <h2>{item.title}</h2>
-                  <p class="org">{item.org}</p>
-                  <p class="period">{item.period}</p>
-                  <p class="description">{item.description}</p>
-                  <p class="tags">{item.tags.join(' / ')}</p>
+    </header>
+    <ol class="experience-list">
+      {
+        experiences.map((item, index) => (
+          <li
+            class:list={['career-item', { current: index === 0 }]}
+            data-reveal="right"
+          >
+            <span class="career-checkpoint mono">{item.number}</span>
+            <div class="career-meta">
+              <span class="mono">{item.period}</span>
+              {index === 0 && (
+                <span class="current-badge mono">
+                  <i class="status-dot" />
+                  CURRENT
+                </span>
+              )}
+            </div>
+            <div class="career-role">
+              <>
+                <div>
+                  <>
+                    <h3>{item.title}</h3>
+                    <p class="career-org">{item.org}</p>
+                  </>
                 </div>
-                <div class="year-marker" aria-hidden="true">
-                  <span></span>
-                  <strong>{item.year}</strong>
-                </div>
-              </article>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
+                <img
+                  src={item.logo}
+                  alt={item.logoAlt}
+                  loading="lazy"
+                  width="48"
+                  height="48"
+                />
+              </>
+            </div>
+            <p class="career-description">{item.description}</p>
+            <p class="career-tags mono">{item.tags.join(' / ')}</p>
+          </li>
+        ))
+      }
+    </ol>
   </div>
 </section>

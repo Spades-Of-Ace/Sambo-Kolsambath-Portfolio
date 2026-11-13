@@ -1,67 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-import SocialRail from '../components/SocialRail.astro';
-import About from '../sections/About.astro';
-import Contact from '../sections/Contact.astro';
-import Experience from '../sections/Experience.astro';
+import Footer from '../components/Footer.astro';
 import Hero from '../sections/Hero.astro';
+import Experience from '../sections/Experience.astro';
 import Projects from '../sections/Projects.astro';
 import Skills from '../sections/Skills.astro';
-import '../styles/scene.css';
-import '../styles/hero.css';
+import About from '../sections/About.astro';
+import Contact from '../sections/Contact.astro';
+import RacingBackdrop from '../components/RacingBackdrop.astro';
+import BikeDeparture from '../sections/BikeDeparture.astro';
+import BootIntro from '../components/BootIntro.astro';
+import '../styles/journey.css';
+import '../styles/section-flow.css';
 ---
 
-<BaseLayout title="Homepage">
+<BaseLayout title="Sambo Kolsambath / ACE RACING">
   <Navbar />
-  <SocialRail />
-
-  <div class="journey-page relative z-10 text-white">
-    <section
-      id="home"
-      class="journey-panel is-active"
-      data-rail-label="LET'S BUILD SOMETHING GREAT"
-    >
-      <Hero />
-    </section>
-
-    <section
-      id="experience"
-      class="journey-panel"
-      data-rail-label="BUILDING DIGITAL EXPERIENCES"
-    >
-      <Experience />
-    </section>
-
-    <section
-      id="projects"
-      class="journey-panel"
-      data-rail-label="BUILDING DIGITAL EXPERIENCES"
-    >
-      <Projects />
-    </section>
-
-    <section
-      id="skills"
-      class="journey-panel"
-      data-rail-label="THE SYSTEM BEHIND THE WORK"
-    >
-      <Skills />
-    </section>
-
-    <section id="about" class="journey-panel" data-rail-label="BEYOND THE CODE">
-      <About />
-    </section>
-
-    <section
-      id="contact"
-      class="journey-panel"
-      data-rail-label="INITIATE CONTACT"
-    >
-      <Contact />
-    </section>
+  <BootIntro />
+  <RacingBackdrop />
+  <div class="portfolio-journey">
+    <Hero />
+    <Experience />
+    <Projects />
+    <Skills />
+    <About />
+    <Contact />
+    <BikeDeparture />
+    <Footer />
   </div>
-
-  <Footer />
 </BaseLayout>

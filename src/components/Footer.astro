@@ -1,79 +1,40 @@
-<footer class="footer" aria-label="Site footer">
-  <div class="footer-bg-grid" aria-hidden="true"></div>
+---
+import { ArrowUp } from '@lucide/astro';
+---
 
-  <div class="footer-shell">
-    <section class="footer-main">
-      <div class="footer-identity">
-        <a href="/" class="footer-brand">ACE_</a>
-        <strong>Sambo Kolsambath</strong>
-        <p>Frontend Developer</p>
-        <p>UX/UI <span></span> Digital Systems</p>
-        <div class="footer-mini-rule" aria-hidden="true">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-        <p class="footer-description">
-          Designing digital experiences and building systems that create real
-          impact.
-        </p>
-      </div>
-
-      <div class="footer-connect">
-        <h2>Let's Connect<span>.</span></h2>
-        <p>Open to opportunities, collaborations, and meaningful conversations.</p>
-        <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="footer-talk"
-        >
-          Let's Talk
-          <i aria-hidden="true">></i>
-        </a>
-      </div>
-
-      <nav class="footer-socials" aria-label="Footer social links">
-        <a
-          href="https://www.linkedin.com/in/sambo-kolsambath-76269a2a0/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/svg%20icon/linkedin-logo-bold.svg" alt="" aria-hidden="true" />
-          <span>LinkedIn</span>
-        </a>
-        <a
-          href="https://github.com/Spades-Of-Ace"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/svg%20icon/github-logo-bold.svg" alt="" aria-hidden="true" />
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://t.me/Spades_Of_Ace"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/svg%20icon/telegram-logo-bold.svg" alt="" aria-hidden="true" />
-          <span>Telegram</span>
-        </a>
-        <a
-          href="https://www.facebook.com/Spade.0f.ace/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/svg%20icon/facebook-logo-bold.svg" alt="" aria-hidden="true" />
-          <span>Facebook</span>
-        </a>
-      </nav>
-    </section>
-
-    <section class="footer-bottom" aria-label="Footer bottom">
-      <p>© 2026 <strong>ACE_</strong> Sambo Kolsambath</p>
-      <span class="footer-star" aria-hidden="true"></span>
-      <a href="/" class="footer-origin">Back To Origin ^</a>
-    </section>
+<footer id="footer" class="footer">
+  <div class="footer-top">
+    <a href="/#home" class="brand" aria-label="Ace home"
+      ><img
+        class="brand-logo"
+        src="/logos/ace-logo-transparent.webp"
+        alt="ACE"
+        width="320"
+        height="160"
+        loading="lazy"
+      /></a
+    ><span class="mono">SAMBO KOLSAMBATH / PHNOM PENH, CAMBODIA</span><a
+      href="#main-content"
+      class="text-link">BACK TO TOP <ArrowUp size={16} /></a
+    >
+  </div>
+  <div class="footer-bottom mono">
+    <span>&copy; {new Date().getFullYear()} SAMBO KOLSAMBATH</span><span
+      >DESIGNED WITH PRECISION. BUILT WITH INTENT.</span
+    ><div>
+      <a
+        href="https://github.com/Spades-Of-Ace"
+        target="_blank"
+        rel="noopener noreferrer">GITHUB</a
+      ><a
+        href="https://www.linkedin.com/in/sambo-kolsambath-76269a2a0/"
+        target="_blank"
+        rel="noopener noreferrer">LINKEDIN</a
+      ><a
+        href="https://reactbits.dev/backgrounds/threads"
+        target="_blank"
+        rel="noopener noreferrer">SHADER / REACT BITS</a
+      >
+    </div>
   </div>
 </footer>

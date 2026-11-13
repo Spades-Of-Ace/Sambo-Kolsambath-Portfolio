@@ -1,0 +1,270 @@
+/* Supporting copy stays readable without changing the display-title scale. */
+:root {
+  --copy-size: 18px;
+  --detail-size: 14px;
+  --micro-size: 12px;
+}
+.lucide {
+  stroke-width: 1.75;
+}
+.about-traits > div > .lucide {
+  margin-bottom: 12px;
+  color: var(--section-accent, var(--green-strong));
+}
+.about-info .mono,
+.contact-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-info .mono > .lucide,
+.contact-group h3 > .lucide {
+  color: var(--section-accent, var(--green-strong));
+}
+.brand-logo {
+  display: block;
+  width: 156px;
+  height: 78px;
+  object-fit: contain;
+}
+.footer .brand-logo {
+  width: 200px;
+  height: 100px;
+}
+.boot-logo {
+  display: block;
+  width: 360px;
+  max-width: 75vw;
+  height: auto;
+}
+.boot-label {
+  font-size: var(--micro-size);
+}
+.site-nav a {
+  font-size: 14px;
+}
+.nav-contact,
+.button,
+.text-link,
+.hero-actions .text-link {
+  font-size: 14px;
+}
+.hero-actions .button {
+  font-size: 14px;
+}
+.contact-email {
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+.nav-index {
+  font-size: 12px;
+}
+.hero-description,
+.section-description,
+.about-layout .section-description,
+.contact-intro > p:not(.small-label) {
+  font-size: var(--copy-size);
+  line-height: 1.7;
+}
+.hero-description {
+  width: 450px;
+  max-width: 100%;
+}
+.hero-eyebrow,
+.hero-topline {
+  font-size: var(--micro-size);
+}
+.discipline-strip {
+  font-size: 17px;
+}
+.career-checkpoint {
+  font-size: 12px;
+}
+.small-label,
+.career-meta > span:first-child,
+.current-badge,
+.project-eyebrow,
+.project-role,
+.project-period,
+.project-overview h4,
+.project-contribution summary,
+.skill-panel-top,
+.skill-panel-note,
+.skill-tabs button > .mono,
+.skill-items .mono,
+.about-layout .small-label,
+.about-info .mono,
+.education-heading,
+.education-index,
+.education-item .small-label,
+.contact-intro > .small-label,
+.contact-group h3,
+.footer-top > .mono,
+.footer-bottom {
+  font-size: var(--detail-size);
+  line-height: 1.6;
+}
+.career-org {
+  font-size: 18px;
+}
+.career-description,
+.project-overview p,
+.project-contribution p,
+.skill-panel > p,
+.education-item p,
+.contact-group li a,
+.about-info > div p:last-child {
+  font-size: 17px;
+  line-height: 1.7;
+}
+.career-tags,
+.project-tags li {
+  font-size: var(--micro-size);
+  line-height: 1.8;
+}
+.project-selector button,
+.skill-tabs button {
+  font-size: 16px;
+}
+.project-browser {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.project-browser .project-selector {
+  display: flex;
+  overflow-x: auto;
+  min-width: 0;
+  margin: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #86bc4b66 transparent;
+}
+.project-browser .project-selector button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.project-browser .gallery-navigation {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+.gallery-navigation .icon-button {
+  width: 46px;
+  height: 46px;
+}
+.project-window-bar {
+  font-size: var(--micro-size);
+  gap: 16px;
+}
+.project-window-bar > span:last-child {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.about-traits strong,
+.about-traits p,
+.about-photo figcaption {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.about-traits strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.departure-copy > p,
+.departure-signoff {
+  font-size: 14px;
+}
+.footer-bottom {
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-bottom > div {
+  flex-wrap: wrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .site-nav {
+    gap: 18px;
+  }
+  .site-nav a {
+    font-size: 12px;
+  }
+  .brand-logo {
+    width: 130px;
+    height: 65px;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --copy-size: 16px;
+    --detail-size: 13px;
+  }
+  .brand-logo {
+    width: 130px;
+    height: 65px;
+  }
+  .site-nav a {
+    font-size: 18px;
+  }
+  .career-description,
+  .project-overview p,
+  .project-contribution p,
+  .skill-panel > p,
+  .education-item p,
+  .contact-group li a,
+  .about-info > div p:last-child,
+  .career-org {
+    font-size: 16px;
+  }
+  .hero-description {
+    max-width: 360px;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .hero-actions .button {
+    min-height: 52px;
+  }
+  .project-window-bar {
+    align-items: flex-start;
+    font-size: 12px;
+  }
+  .project-window-bar > span {
+    min-width: 0;
+  }
+  .project-window-bar > span:first-child {
+    flex-shrink: 0;
+  }
+  .project-selector button {
+    font-size: 14px;
+  }
+  .project-browser {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .project-browser .project-selector button {
+    padding: 14px 12px;
+  }
+  .project-browser .gallery-navigation {
+    gap: 6px;
+  }
+  .gallery-navigation .icon-button {
+    width: 40px;
+    height: 44px;
+  }
+  .footer-top {
+    flex-wrap: wrap;
+  }
+}

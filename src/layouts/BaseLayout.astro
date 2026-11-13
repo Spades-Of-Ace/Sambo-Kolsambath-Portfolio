@@ -1,29 +1,65 @@
 ---
-const { title = 'Ace Portfolio' } = Astro.props;
+const {
+  title = 'Sambo Kolsambath / ACE RACING',
+  description = 'Sambo Kolsambath. Frontend developer, UX/UI designer and business analyst based in Phnom Penh, Cambodia.',
+} = Astro.props;
 import '../styles/global.css';
+import '../styles/racing.css';
+import '../styles/section-motion.css';
+import '../styles/ignition.css';
+import '../styles/neon.css';
+import '../styles/readability.css';
+import Motion from '../components/Motion.astro';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      (() => {
+        const navigation = performance.getEntriesByType('navigation')[0];
+        if (location.pathname !== '/' || navigation?.type !== 'reload') return;
+        const restoration = history.scrollRestoration;
+        history.scrollRestoration = 'manual';
+        const origin = new URL(location.href);
+        origin.hash = '';
+        history.replaceState(history.state, '', origin);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        // Resume normal history behavior once the reload's restoration window has passed.
+        window.addEventListener(
+          'pageshow',
+          () => {
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                history.scrollRestoration = restoration;
+              }),
+            );
+          },
+          { once: true },
+        );
+      })();
+    </script>
 
-    <!-- Google Fonts -->
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#080a09" />
+    <link rel="icon" type="image/png" href="/logos/ace-icon-transparent.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
 
-  <body class="relative bg-black text-white overflow-x-hidden">
-    <!-- Vignette overlay -->
-    <div class="vignette pointer-events-none fixed inset-0 z-0"></div>
-
-    <main class="relative z-10">
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content">
       <slot />
     </main>
+    <Motion />
   </body>
 </html>

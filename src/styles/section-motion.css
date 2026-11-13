@@ -1,0 +1,114 @@
+.bits-word,
+.bits-char {
+  display: inline-block;
+  position: relative;
+}
+.bits-word {
+  white-space: nowrap;
+}
+.bits-ghost {
+  visibility: hidden;
+}
+.bits-code {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  text-align: center;
+}
+.bits-code.is-decoding {
+  color: var(--green);
+  opacity: 0.65;
+}
+.bits-shining {
+  background: linear-gradient(
+    110deg,
+    var(--section-accent, var(--green)) 32%,
+    var(--section-highlight, #f4ffe9) 48%,
+    var(--section-accent, var(--green)) 64%
+  );
+  background-size: 250% 100%;
+  background-position: var(--shine-position, 160%) 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bits-click-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bits-click-layer > span,
+.bits-click-layer i {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+}
+.bits-click-layer i {
+  width: 7px;
+  height: 1px;
+  background: #9de04d;
+  transform-origin: 0 50%;
+}
+.skill-tabs button,
+.project-selector button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.skill-tabs button::after,
+.project-selector button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    #e2ffb918 48%,
+    transparent 70%
+  );
+  transform: translateX(-105%);
+  transition: transform 0.6s ease;
+}
+@media (hover: hover) {
+  .skill-tabs button:hover::after,
+  .project-selector button:hover::after {
+    transform: translateX(105%);
+  }
+  .skill-tabs button:hover > svg:last-child {
+    transform: translate(3px, -3px);
+  }
+  .skill-items li:hover {
+    background: #9de04d0a;
+  }
+  .skill-items li:hover strong {
+    transform: translateX(4px);
+    color: var(--green);
+  }
+  .contact-intro h2 a:hover svg {
+    transform: translate(5px, -5px);
+  }
+}
+.skill-tabs button > svg,
+.skill-items strong,
+.contact-intro h2 svg {
+  transition:
+    transform 0.3s,
+    color 0.3s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bits-click-layer {
+    display: none;
+  }
+  .bits-shining {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+  .skill-tabs button::after,
+  .project-selector button::after {
+    display: none;
+  }
+}

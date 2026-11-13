@@ -1,22 +1,32 @@
 ---
+import {
+  ScanSearch,
+  Focus,
+  UsersRound,
+  Target,
+  CodeXml,
+  MapPin,
+  Cpu,
+  Route,
+} from '@lucide/astro';
 const traits = [
   {
-    icon: '/svg%20icon/lightning-fill.svg',
+    icon: ScanSearch,
     title: 'Curious',
     text: 'Always exploring and learning.',
   },
   {
-    icon: '/svg%20icon/crosshair-simple-fill.svg',
+    icon: Focus,
     title: 'Focused',
     text: 'Driven by clarity and purpose.',
   },
   {
-    icon: '/svg%20icon/users-fill.svg',
+    icon: UsersRound,
     title: 'Collaborative',
     text: 'Better solutions together.',
   },
   {
-    icon: '/svg%20icon/planet-fill.svg',
+    icon: Target,
     title: 'Impact Driven',
     text: 'Building for users and communities.',
   },
@@ -24,22 +34,22 @@ const traits = [
 
 const infoItems = [
   {
-    icon: '/svg%20icon/crosshair-fill.svg',
+    icon: CodeXml,
     title: 'Focus',
     lines: ['Frontend Development', 'UX / UI Design', 'Digital Solutions'],
   },
   {
-    icon: '/svg%20icon/map-pin-fill.svg',
+    icon: MapPin,
     title: 'Based In',
     lines: ['Phnom Penh,', 'Cambodia'],
   },
   {
-    icon: '/svg%20icon/sparkle-fill.svg',
+    icon: Cpu,
     title: 'Interests',
     lines: ['AI & Data', 'UX Research', 'Product Design'],
   },
   {
-    icon: '/svg%20icon/planet-fill.svg',
+    icon: Route,
     title: 'Vision',
     lines: ['Using technology', 'to create solutions', 'that matter.'],
   },
@@ -63,80 +73,95 @@ const education = [
 ];
 ---
 
-<section class="about-page" aria-labelledby="about-title">
-  <div class="about-grid-overlay" aria-hidden="true"></div>
-
-  <div class="about-shell">
-    <div class="about-intro">
-      <h1 id="about-title" class="about-heading">
-        <span>Beyond</span>
-        <span>The</span>
-        <span class="accent">Code.</span>
-      </h1>
-
-      <div class="about-rule" aria-hidden="true"></div>
-
-      <p class="about-copy">
-        I'm Sambo Kolsambath - <strong>Ace</strong>. A developer, designer, and
-        problem solver who loves building meaningful digital experiences and
-        turning ideas into real-world impact.
-      </p>
-
-      <div class="identity-traits" aria-label="Personal qualities">
+<section
+  id="about"
+  data-nav-target="about"
+  class="about-section section-pad"
+  aria-labelledby="about-title"
+>
+  <div class="about-layout">
+    <div data-reveal="left">
+      <p class="small-label mono">THE PERSON BEHIND THE PIXELS</p><h2
+        id="about-title"
+        class="display-heading"
+        data-heading-effect="blur"
+      >
+        DRIVEN BY<br /><em>CURIOSITY.</em>
+      </h2><p class="about-lead">
+        I'm Sambo Kolsambath.<br />You can call me <strong>Ace.</strong>
+      </p><p class="section-description">
+        A developer, designer, and problem solver who loves building meaningful
+        digital experiences and turning ideas into real-world impact. My work
+        brings together frontend development, UX/UI design, and business
+        analysis.
+      </p><div class="about-traits">
         {
           traits.map((trait) => (
-            <article class="identity-trait">
-              <i aria-hidden="true">
-                <img src={trait.icon} alt="" />
-              </i>
-              <strong>{trait.title}</strong>
-              <p>{trait.text}</p>
-            </article>
+            <div>
+              <>
+                <trait.icon size={24} aria-hidden="true" />
+                <strong class="mono">{trait.title}</strong>
+                <p>{trait.text}</p>
+              </>
+            </div>
           ))
         }
       </div>
     </div>
-
-    <aside class="about-info-rail" aria-label="Personal details">
-      {
-        infoItems.map((item) => (
-          <article class="about-info-item">
-            <i aria-hidden="true">
-              <img src={item.icon} alt="" />
-            </i>
-            <div>
-              <strong>{item.title}</strong>
-              {item.lines.map((line) => (
-                <span>{line}</span>
-              ))}
-            </div>
-          </article>
-        ))
-      }
-    </aside>
-
-    <div class="education-panel">
-      <h2>Education</h2>
-
-      <div class="education-cards">
+    <div class="about-detail" data-reveal="right">
+      <figure class="about-photo">
+        <img
+          src="/assets/motorcycle/h2r/detail.webp"
+          alt="Close-up of carbon fiber bodywork and a green motorcycle frame"
+          loading="lazy"
+          width="1200"
+          height="675"
+        /><figcaption class="mono">PRECISION IS A MINDSET.</figcaption>
+      </figure><div class="about-info">
         {
-          education.map((item) => (
-            <article class="education-card">
-              <div class="education-number">
-                <span>{item.number}</span>
-              </div>
-
-              <img src={item.logo} alt={`${item.school} logo`} />
-
-              <div>
+          infoItems.map((item) => (
+            <div>
+              <>
+                <p class="mono">
+                  <item.icon size={17} aria-hidden="true" />
+                  {item.title}
+                </p>
+                <p>{item.lines.join(' ')}</p>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div class="education-heading mono">
+    <span>THE FOUNDATION / EDUCATION</span><span
+      >ALWAYS MOVING FORWARD <span class="lime">+</span></span
+    >
+  </div>
+  <div class="education-grid">
+    {
+      education.map((item) => (
+        <article class="education-item" data-reveal>
+          <>
+            <img
+              src={item.logo}
+              alt={`${item.school} logo`}
+              width="64"
+              height="64"
+              loading="lazy"
+            />
+            <div>
+              <>
+                <span class="small-label mono">{item.graduated}</span>
                 <h3>{item.school}</h3>
                 <p>{item.degree}</p>
-                <small>{item.graduated}</small>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </div>
+              </>
+            </div>
+            <span class="education-index mono">{item.number}</span>
+          </>
+        </article>
+      ))
+    }
   </div>
 </section>

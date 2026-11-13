@@ -1,136 +1,170 @@
 ---
-const skillGroups = [
+import { CodeXml, Layers, Wrench, Terminal, ArrowUpRight } from '@lucide/astro';
+const groups = [
   {
-    number: '01',
-    title: 'Core Stack',
-    icon: '/svg%20icon/stack-fill.svg',
+    title: 'Core frontend stack',
+    label: 'Core Stack',
+    icon: CodeXml,
+    description:
+      'Component-driven interfaces. Responsive by design. A stack chosen for clean architecture and thoughtful digital experiences.',
     skills: ['Astro', 'React', 'Tailwind CSS', 'Next.js', 'TypeScript'],
+    note: 'STRUCTURE / COMPONENTS / INTERACTION',
   },
   {
-    number: '02',
-    title: 'Supporting Stack',
-    icon: '/svg%20icon/puzzle-piece-fill.svg',
+    title: 'The fundamentals',
+    label: 'Supporting Stack',
+    icon: Layers,
+    description:
+      'Semantic HTML, carefully structured CSS, and JavaScript bring accessible, responsive interfaces to life across devices.',
     skills: ['HTML', 'CSS', 'JavaScript'],
+    note: 'SEMANTICS / LAYOUT / BEHAVIOR',
   },
   {
-    number: '03',
-    title: 'Tools',
-    icon: '/svg%20icon/wrench-fill.svg',
+    title: 'Tools of the trade',
+    label: 'Tools',
+    icon: Wrench,
+    description:
+      'From Figma components to version-controlled code, these tools connect design decisions with implementation and collaboration.',
     skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Figma'],
+    note: 'DESIGN / COLLABORATE / SHIP',
   },
   {
-    number: '04',
-    title: 'Programming Background',
-    icon: '/svg%20icon/atom-fill.svg',
+    title: 'Beyond the browser',
+    label: 'Programming Background',
+    icon: Terminal,
+    description:
+      'A foundation in Python, Java, and C++ supports structured problem solving and an understanding of the systems behind an interface.',
     skills: ['Python', 'Java', 'C++'],
-  },
-];
-
-const orbitNodes = [
-  {
-    className: 'node-frontend',
-    icon: '/svg%20icon/atom-fill.svg',
-    title: 'Frontend Development',
-    description:
-      'Astro, React, Tailwind CSS, Next.js, and TypeScript for structured interface development.',
-  },
-  {
-    className: 'node-support',
-    icon: '/svg%20icon/stack-fill.svg',
-    title: 'Supporting Stack',
-    description:
-      'HTML, CSS, and JavaScript foundations for semantic, responsive, interactive web experiences.',
-  },
-  {
-    className: 'node-tools',
-    icon: '/svg%20icon/wrench-fill.svg',
-    title: 'Tools',
-    description:
-      'Git, GitHub, VS Code, Docker, and Figma for building, testing, designing, and shipping.',
-  },
-  {
-    className: 'node-programming',
-    icon: '/svg%20icon/puzzle-piece-fill.svg',
-    title: 'Programming Background',
-    description:
-      'Python, Java, and C++ experience that supports problem solving beyond the browser.',
+    note: 'LOGIC / SYSTEMS / PROBLEM SOLVING',
   },
 ];
 ---
 
-<section class="skills-page" aria-labelledby="skills-title">
-  <div class="skills-grid-overlay" aria-hidden="true"></div>
-
-  <div class="skills-hero">
-    <div class="skills-copy">
-      <h1 id="skills-title" class="skills-heading">
-        <span>The System</span>
-        <span>Behind</span>
-        <span class="accent">The Work.</span>
-      </h1>
-      <div class="skills-rule" aria-hidden="true"></div>
-      <p>
-        A collection of technologies, tools, and knowledge that power the
-        solutions I design and build.
-      </p>
-    </div>
-
-    <div class="system-map" aria-label="Technology constellation system map">
-      <div class="system-orbits" aria-hidden="true"></div>
-      <div class="system-core">
-        <span>Building</span>
-        <span>Digital</span>
-        <span>Solutions</span>
-      </div>
-
+<section
+  id="skills"
+  data-nav-target="skills"
+  class="skills-section section-pad"
+  aria-labelledby="skills-title"
+>
+  <div class="section-heading-row" data-reveal>
+    <h2 id="skills-title" class="display-heading" data-heading-effect="float">
+      THE SYSTEM<br />BEHIND THE <em>WORK.</em>
+    </h2><p class="section-description">
+      Good work starts with the right tools.<br />Great work comes from knowing
+      how to use them.
+    </p>
+  </div>
+  <div class="skills-workbench" data-reveal>
+    <div class="skill-tabs" aria-label="Skill categories">
       {
-        orbitNodes.map((node) => (
-          <button class:list={['orbit-node', node.className]} type="button">
-            <span class="node-icon">
-              <img src={node.icon} alt="" aria-hidden="true" />
-            </span>
-            <span class="node-label">{node.title}</span>
-            <span class="node-detail">
-              <strong>{node.title}</strong>
-              <span>{node.description}</span>
-            </span>
+        groups.map((group, i) => (
+          <button
+            type="button"
+            id={`skill-tab-${i}`}
+            aria-controls={`skill-panel-${i}`}
+            data-skill-tab={i}
+          >
+            <>
+              <span class="mono">0{i + 1}</span>
+              <group.icon size={20} />
+              <span>{group.label}</span>
+              <ArrowUpRight size={16} />
+            </>
           </button>
         ))
       }
     </div>
-
-    <aside class="learning-panel" aria-label="Learning note">
-      <strong>
-        <img src="/svg%20icon/sparkle-fill.svg" alt="" aria-hidden="true" />
-        Always Learning
-      </strong>
-      <p>Technology evolves every day. So do I.</p>
-    </aside>
-  </div>
-
-  <div class="skill-system-cards">
-    {
-      skillGroups.map((group) => (
-        <article class="skill-system-card">
-          <div class="skill-card-head">
-            <div>
-              <span>{group.number}</span>
-              <h2>{group.title}</h2>
-            </div>
-            <i aria-hidden="true">
-              <img src={group.icon} alt="" />
-            </i>
+    <div class="skill-panels">
+      {
+        groups.map((group, i) => (
+          <div
+            class="skill-panel"
+            id={`skill-panel-${i}`}
+            data-skill-panel={i}
+            aria-labelledby={`skill-tab-${i}`}
+          >
+            <>
+              <div class="skill-panel-top mono">
+                <>
+                  <span>MODULE / 0{i + 1}</span>
+                  <span>
+                    <i class="status-dot" /> ALWAYS LEARNING
+                  </span>
+                </>
+              </div>
+              <h3>{group.title}</h3>
+              <p>{group.description}</p>
+              <ul class="skill-items">
+                {group.skills.map((skill, index) => (
+                  <li>
+                    <span class="mono">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <strong>{skill}</strong>
+                    <ArrowUpRight size={17} />
+                  </li>
+                ))}
+              </ul>
+              <div class="skill-panel-note mono">{group.note}</div>
+            </>
           </div>
-
-          <ul>
-            {group.skills.map((skill) => (
-              <li>
-                <span>{skill}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
 </section>
+<script>
+  import {
+    animateSkillPanel,
+    resetSkillPanel,
+  } from '../scripts/react-bits-motion';
+  const tabs = [
+    ...document.querySelectorAll<HTMLButtonElement>('[data-skill-tab]'),
+  ];
+  const panels = [
+    ...document.querySelectorAll<HTMLElement>('[data-skill-panel]'),
+  ];
+  document.querySelector('.skill-tabs')?.setAttribute('role', 'tablist');
+  document
+    .querySelector('.skill-tabs')
+    ?.setAttribute('aria-orientation', 'vertical');
+  let active = -1;
+  const activate = (index: number, focus = false) => {
+    const changed = active !== index;
+    const initial = active === -1;
+    if (changed) panels.forEach(resetSkillPanel);
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+    });
+    panels.forEach((panel, i) => {
+      panel.setAttribute('role', 'tabpanel');
+      panel.tabIndex = 0;
+      panel.hidden = i !== index;
+    });
+    if (focus) tabs[index]?.focus();
+    if (changed && !initial) animateSkillPanel(panels[index]);
+    active = index;
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(i));
+    tab.addEventListener('keydown', (e) => {
+      let index = i;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight')
+        index = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft')
+        index = (i + tabs.length - 1) % tabs.length;
+      else if (e.key === 'Home') index = 0;
+      else if (e.key === 'End') index = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      activate(index, true);
+    });
+  });
+  activate(0);
+  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) panels.forEach(resetSkillPanel);
+  });
+</script>

@@ -1,0 +1,56 @@
+<div
+  class="hero-shader"
+  data-hero-shader
+  data-state="fallback"
+  aria-hidden="true"
+>
+  <img
+    class="shader-fallback"
+    src="/assets/shaders/threads-still.webp"
+    width="1440"
+    height="948"
+    alt=""
+    fetchpriority="high"
+  />
+  <canvas></canvas>
+</div>
+<script>
+  const host = document.querySelector<HTMLElement>('[data-hero-shader]');
+  if (host) {
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    let dispose: (() => void) | undefined;
+    let pending = false;
+    let alive = true;
+    let visible = false;
+    const start = async () => {
+      if (!alive || pending || dispose || !visible || motion.matches) return;
+      pending = true;
+      try {
+        const { createThreadsShader } =
+          await import('../scripts/threads-shader');
+        if (alive && !motion.matches) dispose = createThreadsShader(host);
+      } catch (error) {
+        host.dataset.state = 'fallback';
+        console.warn(
+          'The animated shader is unavailable. Using the still background.',
+          error,
+        );
+      } finally {
+        pending = false;
+      }
+    };
+    const observer = new IntersectionObserver((entries) => {
+      visible = entries.some((entry) => entry.isIntersecting);
+      if (visible) void start();
+    });
+    observer.observe(host);
+    motion.addEventListener('change', start);
+    window.addEventListener('pagehide', (event) => {
+      if (event.persisted) return;
+      alive = false;
+      observer.disconnect();
+      motion.removeEventListener('change', start);
+      dispose?.();
+    });
+  }
+</script>

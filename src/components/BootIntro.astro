@@ -1,0 +1,77 @@
+<div class="ignition-boot" data-ignition-boot hidden aria-hidden="true">
+  <div class="boot-curtain" data-boot-curtain></div>
+  <div class="boot-wheel" data-boot-wheel>
+    <div class="boot-wheel-assembly" data-boot-wheel-assembly>
+      <div class="boot-wheel-spin" data-boot-wheel-spin>
+        <img
+          class="boot-wheel-image"
+          data-boot-wheel-image
+          src="/assets/motorcycle/h2r/boot-rear-wheel.webp"
+          alt=""
+          width="1000"
+          height="1000"
+          decoding="async"
+        />
+        <span class="boot-wheel-sweep" data-boot-wheel-sweep></span>
+      </div>
+    </div>
+  </div>
+  <div class="boot-identity">
+    <div class="brand boot-emblem" data-boot-mark>
+      <span class="boot-halo" data-boot-halo></span>
+      <img
+        class="boot-logo"
+        src="/logos/ace-logo-transparent.webp"
+        alt=""
+        width="640"
+        height="320"
+        fetchpriority="high"
+      />
+      <span class="boot-glint" data-boot-glint></span>
+    </div>
+    <div class="boot-details" data-boot-details>
+      <div class="boot-track"><span data-boot-charge></span></div>
+      <p class="boot-label mono">IGNITION</p>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (() => {
+    const boot = document.querySelector('[data-ignition-boot]');
+    const deepLink =
+      location.hash &&
+      location.hash !== '#home' &&
+      location.hash !== '#main-content';
+    if (
+      !(boot instanceof HTMLElement) ||
+      deepLink ||
+      scrollY > 24 ||
+      matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
+    boot.hidden = false;
+    boot.dataset.startedAt = String(performance.now());
+    let guard;
+    const cleanup = () => {
+      clearTimeout(guard);
+      document.removeEventListener('keydown', onKey, true);
+      window.removeEventListener('scroll', onScroll);
+      boot.removeEventListener('ignition:claim', cleanup);
+    };
+    const expire = () => {
+      boot.hidden = true;
+      boot.dataset.expired = 'true';
+      cleanup();
+    };
+    const onKey = (event) => {
+      if (event.key === 'Escape' || event.key === 'Tab') expire();
+    };
+    const onScroll = () => {
+      if (scrollY > 24) expire();
+    };
+    guard = setTimeout(expire, 2800);
+    document.addEventListener('keydown', onKey, true);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    boot.addEventListener('ignition:claim', cleanup, { once: true });
+  })();
+</script>

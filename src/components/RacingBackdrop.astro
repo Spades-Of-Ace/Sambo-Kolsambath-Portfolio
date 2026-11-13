@@ -1,0 +1,76 @@
+---
+import HeroShader from './HeroShader.astro';
+---
+
+<div
+  class="racing-backdrop"
+  data-racing-backdrop
+  data-shader-surface
+  data-phase="home"
+  aria-hidden="true"
+>
+  <div class="backdrop-tone"></div>
+  <HeroShader />
+  <div class="backdrop-neon" data-section-lighting></div>
+  <div class="backdrop-bike" data-background-bike>
+    <div class="backdrop-ignition">
+      <div class="backdrop-bike-motion">
+        <img
+          data-bike-view="quarter"
+          src="/assets/motorcycle/h2r/bike-front.webp"
+          width="1440"
+          height="900"
+          alt=""
+          fetchpriority="high"
+        />
+        <img
+          data-bike-view="detail"
+          src="/assets/motorcycle/h2r/bike-detail.webp"
+          width="1800"
+          height="1125"
+          alt=""
+        />
+        <img
+          data-bike-view="head"
+          src="/assets/motorcycle/h2r/bike-head-on.webp"
+          width="1440"
+          height="900"
+          alt=""
+        />
+        <img
+          data-bike-view="side"
+          src="/assets/motorcycle/h2r/bike-side.webp"
+          width="1440"
+          height="900"
+          alt=""
+        />
+        <img
+          data-bike-view="rear"
+          src="/assets/motorcycle/h2r/bike-rear-quarter.webp"
+          width="1600"
+          height="1000"
+          alt=""
+          decoding="async"
+        />
+        <img
+          data-bike-view="cockpit"
+          src="/assets/motorcycle/h2r/bike-cockpit.webp"
+          width="1600"
+          height="1000"
+          alt=""
+          decoding="async"
+        />
+        <img
+          data-bike-view="signal"
+          src="/assets/motorcycle/h2r/bike-rear-signal.webp"
+          width="1600"
+          height="1000"
+          alt=""
+          decoding="async"
+        />
+      </div>
+      <div class="backdrop-wake"></div>
+    </div>
+  </div>
+  <div class="backdrop-shade"></div>
+</div>

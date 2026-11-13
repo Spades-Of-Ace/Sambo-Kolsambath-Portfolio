@@ -5,6 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
+    "verify:racing": "node scripts/verify-racing.mjs",
+    "verify:shader": "node scripts/verify-journey.mjs",
+    "verify:journey": "node scripts/verify-journey.mjs",
+    "verify:ignition": "node scripts/verify-ignition.mjs",
+    "verify:stages": "node scripts/verify-stages.mjs",
+    "capture:shader": "node scripts/capture-shader.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
@@ -12,6 +19,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
+    "@lucide/astro": "^1.72.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -19,11 +27,13 @@
     "gsap": "^3.15.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "tailwindcss": "^4.1.18",
-    "three": "^0.182.0"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@playwright/test": "^1.65.0",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3"
   }
 }

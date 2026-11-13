@@ -1,0 +1,80 @@
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { initSectionFlow } from '../scripts/section-flow';
+  import { initBikeJourney } from '../scripts/bike-journey';
+  import { initHeroIgnition } from '../scripts/hero-ignition';
+  import { initScrollFloat } from '../scripts/scroll-float';
+  import { observeSectionContent } from '../scripts/section-visibility';
+  import {
+    animateSectionContent,
+    initTextEffects,
+    initClickSparks,
+  } from '../scripts/react-bits-motion';
+  gsap.registerPlugin(ScrollTrigger);
+  const restoreFlow = initSectionFlow();
+  const restoreIgnition = initHeroIgnition();
+  const media = gsap.matchMedia();
+  media.add('(prefers-reduced-motion: no-preference)', () => {
+    const restoreHeadings = initScrollFloat();
+    const restoreTextEffects = initTextEffects();
+    const restoreClicks = initClickSparks();
+    const reveals = gsap.context(() => {});
+    const stopReveals = observeSectionContent(
+      '[data-reveal]',
+      (element) => {
+        if (element.dataset.revealed === 'true') return;
+        element.dataset.revealed = 'true';
+        reveals.add(() => animateSectionContent(element));
+      },
+      { threshold: 0.08 },
+    );
+    return () => {
+      stopReveals();
+      restoreHeadings();
+      restoreTextEffects();
+      restoreClicks();
+      reveals.revert();
+    };
+  });
+  media.add(
+    {
+      all: 'all',
+      wide: '(min-width: 1024px)',
+      reduced: '(prefers-reduced-motion: reduce)',
+    },
+    (context) =>
+      initBikeJourney(
+        Boolean(context.conditions?.wide),
+        Boolean(context.conditions?.reduced),
+      ),
+  );
+  void document.fonts.ready.then(() => ScrollTrigger.refresh());
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        document.querySelectorAll('[data-nav-section]').forEach((link) => {
+          const active =
+            (link as HTMLElement).dataset.navSection ===
+            (entry.target as HTMLElement).dataset.navTarget;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      });
+    },
+    { rootMargin: '-15% 0px -60% 0px', threshold: 0 },
+  );
+  if (!document.querySelector('[data-stage-flow-ready="true"]'))
+    document
+      .querySelectorAll('[data-nav-target]')
+      .forEach((section) => navObserver.observe(section));
+  window.addEventListener('pagehide', (event) => {
+    if (event.persisted) return;
+    restoreIgnition();
+    media.revert();
+    navObserver.disconnect();
+    restoreFlow();
+  });
+</script>

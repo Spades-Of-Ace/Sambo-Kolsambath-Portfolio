@@ -1,56 +1,43 @@
 ---
-import '../styles/hero.css';
 import HeroActions from '../components/HeroActions.astro';
+import { ArrowUpRight } from '@lucide/astro';
 ---
 
-<section class="hero-section" aria-labelledby="home-hero-title">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="intro animate-on-scroll">
-        <div class="hero-sub">WELCOME TO THE EVENT HORIZON</div>
-      </div>
-
-      <h1 id="home-hero-title" class="hero-heading animate-on-scroll">
-        <span class="line solid">I BUILD</span>
-        <span class="line solid">DIGITAL</span>
-        <span class="line outline">EXPERIENCES</span>
+<section
+  id="home"
+  data-nav-target="home"
+  class="hero-section"
+  aria-labelledby="home-hero-title"
+>
+  <div class="hero-stage">
+    <div class="hero-topline mono">
+      <span><i class="status-dot"></i> INDEPENDENT PORTFOLIO / 2026</span><span
+        >PHNOM PENH, KH <ArrowUpRight size={13} /></span
+      >
+    </div>
+    <div class="hero-copy">
+      <p class="hero-eyebrow mono">DEVELOPER. DESIGNER. PROBLEM SOLVER.</p>
+      <h1
+        id="home-hero-title"
+        data-heading-effect="split"
+        data-ignition-heading
+      >
+        <span class="hero-name">SAMBO</span><span class="hero-surname"
+          >KOLSAMBATH<span class="hero-name-dot">.</span></span
+        >
       </h1>
-
-      <div class="hero-desc animate-on-scroll">
-        <div class="decor" aria-hidden="true"></div>
-        <p>
-          Front-End Developer building structured, scalable, and user-focused
-          digital experiences.
-        </p>
-      </div>
-
+      <p class="hero-motto">DESIGNED TO <em>PUSH LIMITS.</em></p>
+      <p class="hero-description">
+        Precision in design. Performance in code.<br />I turn complex
+        requirements into clear, responsive digital experiences.
+      </p>
       <HeroActions />
     </div>
-
-    <aside class="info-panel animate-on-scroll" aria-label="Profile summary">
-      <span class="corner-tr" aria-hidden="true"></span>
-      <span class="corner-bl" aria-hidden="true"></span>
-
-      <div class="info-group">
-        <div class="label">BASED IN</div>
-        <div>Phnom Penh,<br />Cambodia</div>
-      </div>
-
-      <div class="info-group">
-        <div class="label">CURRENT ROLE</div>
-        <div>Front-End Developer</div>
-        <div>UX/UI Designer</div>
-        <div>Business Analyst</div>
-      </div>
-
-      <div class="info-group">
-        <div class="label">FOCUS</div>
-        <div>
-          Frontend Development<br />
-          UX/UI Design<br />
-          Digital Systems
-        </div>
-      </div>
-    </aside>
+    <div class="discipline-strip" aria-hidden="true">
+      <span>PRECISION IN DESIGN</span><i>+</i><span>PERFORMANCE IN CODE</span><i
+        >+</i
+      ><span>CLARITY IN EVERY DETAIL</span><i>+</i><span>BUILT WITH INTENT</span
+      ><i>+</i>
+    </div>
   </div>
 </section>

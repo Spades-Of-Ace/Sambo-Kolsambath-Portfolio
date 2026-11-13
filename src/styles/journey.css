@@ -1,0 +1,319 @@
+.racing-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #080d0b;
+  transition: opacity 0.5s;
+}
+.racing-backdrop[data-hidden='true'] {
+  opacity: 0;
+}
+.backdrop-tone,
+.backdrop-shade {
+  position: absolute;
+  inset: 0;
+}
+.backdrop-tone {
+  background: #080d0b;
+}
+.racing-backdrop .hero-shader {
+  inset: 0;
+  mask-image: none;
+  opacity: 0.44;
+}
+.racing-backdrop .shader-fallback {
+  transform: rotate(var(--still-turn, 0deg)) scale(1.4);
+  filter: hue-rotate(var(--still-hue, 0deg));
+}
+.backdrop-bike {
+  position: absolute;
+  left: 36%;
+  top: 23%;
+  width: 62%;
+  max-width: none;
+  opacity: 0.86;
+  transform-origin: 50% 50%;
+}
+.backdrop-bike-motion {
+  position: relative;
+  aspect-ratio: 8 / 5;
+  width: 100%;
+}
+.backdrop-bike img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.backdrop-bike img:not([data-bike-view='quarter']) {
+  opacity: 0;
+}
+.backdrop-shade {
+  background:
+    linear-gradient(90deg, #03070470, #03070426),
+    linear-gradient(0deg, #03070490, transparent 58%, #03070420);
+}
+.portfolio-journey {
+  position: relative;
+  z-index: 1;
+}
+.portfolio-journey .hero-section {
+  background: transparent;
+}
+.portfolio-journey .hero-stage {
+  background: rgb(8 12 10 / 0.5);
+}
+.portfolio-journey .section-pad {
+  --panel-rgb: 9 15 11;
+  --line: #c6d6c438;
+  --muted: #d1ddd3;
+  color: #f3f7f3;
+  background: rgb(var(--panel-rgb) / 0.5);
+  border-top: 1px solid #c6d6c426;
+  min-height: 90svh;
+  transition: border-color 0.35s;
+}
+.portfolio-journey .experience-section {
+  --panel-rgb: 10 19 13;
+}
+.portfolio-journey .projects-section {
+  --panel-rgb: 10 15 20;
+}
+.portfolio-journey .skills-section {
+  --panel-rgb: 19 16 24;
+}
+.portfolio-journey .about-section {
+  --panel-rgb: 21 22 16;
+}
+.portfolio-journey .contact-section {
+  --panel-rgb: 23 13 19;
+}
+.portfolio-journey .section-pad:hover {
+  border-top-color: #8cd34a66;
+}
+.portfolio-journey .section-label > span,
+.portfolio-journey .display-heading em,
+.portfolio-journey .about-lead strong,
+.portfolio-journey .current-badge,
+.portfolio-journey .education-item .small-label,
+.portfolio-journey .about-info .mono {
+  color: var(--green);
+}
+.portfolio-journey
+  :is(
+    .career-org,
+    .career-description,
+    .career-meta,
+    .career-tags,
+    .about-traits p,
+    .education-item p,
+    .education-heading,
+    .education-index,
+    .project-period,
+    .project-role,
+    .project-overview p,
+    .project-contribution p,
+    .project-eyebrow,
+    .project-window-bar,
+    .project-visual-caption,
+    .skill-panel-top,
+    .skill-panel-note
+  ) {
+  color: var(--muted);
+}
+.portfolio-journey .about-info > div p:last-child {
+  color: var(--muted);
+}
+.portfolio-journey
+  :is(.experience-list, .career-item, .education-item, .about-info > div) {
+  border-color: var(--line);
+}
+.portfolio-journey .career-checkpoint {
+  background: #102015;
+  color: var(--green);
+  border-color: #80af6970;
+}
+.portfolio-journey .career-item.current .career-checkpoint {
+  background: #234119;
+  color: #b5ed82;
+}
+.portfolio-journey .about-traits img {
+  filter: none;
+}
+.portfolio-journey .about-photo {
+  display: none;
+}
+.portfolio-journey .about-info {
+  margin-top: 34px;
+  row-gap: 16px;
+}
+.portfolio-journey .about-info > div {
+  padding: 24px 0;
+}
+.portfolio-journey .race-route span {
+  background: #a4b89c55;
+}
+.portfolio-journey .race-route span:first-child {
+  background: var(--green);
+}
+.portfolio-journey .footer {
+  background: #090e0b;
+  border-top-width: 1px;
+}
+.portfolio-journey .hero-stage-label [data-hero-shot] {
+  min-width: 72px;
+}
+.portfolio-journey .hero-stage {
+  isolation: isolate;
+}
+.portfolio-journey .hero-bottom {
+  margin-top: auto;
+}
+.bike-departure {
+  position: relative;
+  min-height: 65svh;
+  background: rgb(7 11 8 / 0.08);
+}
+.journey-ready .bike-departure {
+  height: 190svh;
+}
+.departure-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 560px;
+  padding: 135px var(--gutter) 60px;
+}
+.departure-copy > p {
+  color: var(--green);
+  margin-bottom: 20px;
+}
+.departure-copy h2 {
+  font: 600 64px/1 var(--heading);
+}
+.departure-copy em {
+  color: var(--green);
+  font-style: normal;
+}
+.departure-signoff {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 65px;
+  color: #c6d5c8;
+}
+
+/* React Bits Glare Hover: a contained light band, without another render loop. */
+.button,
+.icon-button,
+.project-image-link,
+.contact-group a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.button::before,
+.icon-button::before,
+.project-image-link::before,
+.contact-group a::before {
+  content: '';
+  position: absolute;
+  inset: -80% -40%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    #ffffff38 49%,
+    transparent 60%
+  );
+  opacity: 0;
+  transform: translateX(-80%);
+  transition:
+    transform 0.65s ease,
+    opacity 0.25s;
+}
+@media (hover: hover) {
+  .button:hover::before,
+  .icon-button:hover::before,
+  .project-image-link:hover::before,
+  .contact-group a:hover::before {
+    opacity: 1;
+    transform: translateX(80%);
+  }
+  .button:hover > svg,
+  .text-link:hover > svg,
+  .contact-group a:hover > svg {
+    transform: translate(3px, -2px);
+  }
+  .career-item:hover .career-role {
+    transform: translateX(5px);
+  }
+  .career-item:hover {
+    border-color: #82d43888;
+  }
+  .education-item:hover {
+    transform: translateY(-3px);
+    border-color: #82d43888;
+  }
+  .project-selector button:hover {
+    background: #82d43816;
+  }
+}
+.button > svg,
+.text-link > svg,
+.contact-group a > svg,
+.career-role,
+.education-item {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s,
+    color 0.25s;
+}
+.skill-tabs button,
+.project-selector button {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+.button:active,
+.icon-button:active {
+  transform: translateY(1px);
+}
+@media (max-width: 760px) {
+  .backdrop-bike {
+    width: 145%;
+    left: -10%;
+    top: 45%;
+  }
+  .portfolio-journey .hero-bottom {
+    margin-top: auto;
+  }
+  .portfolio-journey .about-info {
+    margin-top: 12px;
+  }
+  .departure-stage {
+    min-height: 100svh;
+    padding-top: 140px;
+  }
+  .departure-copy h2 {
+    font-size: 42px;
+  }
+  .departure-signoff {
+    bottom: 50px;
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-ready .bike-departure {
+    height: 65svh;
+  }
+  .departure-stage {
+    position: relative;
+    min-height: 420px;
+    height: 65svh;
+  }
+}

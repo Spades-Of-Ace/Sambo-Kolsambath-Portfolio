@@ -1,91 +1,90 @@
 ---
-const pathname = Astro.url.pathname;
-const onHome = pathname === '/';
-const navHref = (href: string) =>
-  onHome && href !== '/' ? `#${href.replace('/', '')}` : href;
-const isActive = (href: string) =>
-  href === '/' ? pathname === '/' : pathname.startsWith(href);
+import { ArrowUpRight, Menu, X } from '@lucide/astro';
+const links = ['Home', 'Experience', 'Projects', 'Skills', 'About', 'Contact'];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const home = path === '/';
 ---
 
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="/">ACE_</a>
-
-    <nav class="site-nav" aria-label="Primary navigation">
-      <a href={onHome ? '#home' : '/'} class:list={[{ active: isActive('/') }]}>
-        HOME
-      </a>
-      <a
-        href={navHref('/experience')}
-        class:list={[{ active: isActive('/experience') }]}
-      >
-        EXPERIENCE
-      </a>
-      <a
-        href={navHref('/projects')}
-        class:list={[{ active: isActive('/projects') }]}
-      >
-        PROJECTS
-      </a>
-      <a
-        href={navHref('/skills')}
-        class:list={[{ active: isActive('/skills') }]}
-      >
-        SKILLS
-      </a>
-      <a href={navHref('/about')} class:list={[{ active: isActive('/about') }]}>
-        ABOUT
-      </a>
-      <a
-        href={navHref('/contact')}
-        class:list={[{ active: isActive('/contact') }]}
-      >
-        CONTACT
-      </a>
+<header class:list={['site-header', { 'is-solid': !home }]}>
+  <div class="nav-inner">
+    <a href="/#home" class="brand" aria-label="Ace home"
+      ><img
+        class="brand-logo"
+        src="/logos/ace-logo-transparent.webp"
+        alt="ACE"
+        width="320"
+        height="160"
+        fetchpriority="high"
+      /></a
+    >
+    <nav
+      id="primary-navigation"
+      class="site-nav"
+      aria-label="Primary navigation"
+    >
+      {
+        links.map((label, i) => {
+          const id = label.toLowerCase();
+          return (
+            <a
+              href={home ? `#${id}` : `/#${id}`}
+              data-nav-section={id}
+              class:list={{ active: home ? i === 0 : path === `/${id}` }}
+            >
+              <span class="nav-index">0{i + 1}</span>
+              {label}
+            </a>
+          );
+        })
+      }
     </nav>
-
-    <div class="header-cta">
-      <a href="/contact" class="glass-button small">
-        <span class="button-label">LET'S CONNECT -></span>
-      </a>
-    </div>
+    <a class="nav-contact" href={home ? '#contact' : '/#contact'}
+      >Let's talk <ArrowUpRight size={16} /></a
+    >
+    <button
+      type="button"
+      class="menu-toggle icon-button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      ><Menu class="menu-open" size={24} /><X
+        class="menu-close"
+        size={24}
+      /></button
+    >
   </div>
 </header>
-
 <script>
-  const header = document.querySelector('.site-header');
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  const updateHeader = () => {
-    if (!header) return;
-
-    const currentScrollY = window.scrollY;
-    const scrollingDown = currentScrollY > lastScrollY;
-    const movedEnough = Math.abs(currentScrollY - lastScrollY) > 8;
-
-    header.classList.toggle('is-scrolled', currentScrollY > 24);
-
-    if (currentScrollY < 16) {
-      header.classList.remove('is-hidden');
-    } else if (movedEnough && scrollingDown) {
-      header.classList.add('is-hidden');
-    } else if (movedEnough) {
-      header.classList.remove('is-hidden');
-    }
-
-    lastScrollY = currentScrollY;
-    ticking = false;
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  header?.classList.add('nav-enhanced');
+  const close = () => {
+    header?.classList.remove('menu-active');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation');
   };
-
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    header?.classList.toggle('menu-active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute(
+      'aria-label',
+      open ? 'Close navigation' : 'Open navigation',
+    );
+  });
+  document
+    .querySelectorAll('.site-nav a')
+    .forEach((link) => link.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (
+      e.key === 'Escape' &&
+      toggle?.getAttribute('aria-expanded') === 'true'
+    ) {
+      close();
+      toggle?.focus();
+    }
+  });
+  const update = () => header?.classList.toggle('is-scrolled', scrollY > 30);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 </script>

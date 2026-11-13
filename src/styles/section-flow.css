@@ -1,0 +1,109 @@
+/* Native scroll slots drive a single viewport content layer, without snapping or wheel interception. */
+.journey-scroll .stage-panel {
+  position: relative;
+  min-height: 100svh;
+  border: 0;
+}
+.journey-scroll .section-pad {
+  padding-top: 132px;
+  padding-bottom: 80px;
+}
+.journey-scroll .hero-stage {
+  min-height: 100svh;
+  height: 100svh;
+}
+.journey-scroll .hero-copy {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.portfolio-journey.journey-scroll .footer {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 100px;
+  padding-bottom: 56px;
+}
+.journey-scroll .footer-top,
+.journey-scroll .footer-bottom {
+  width: 100%;
+}
+.journey-projected {
+  overflow-anchor: none;
+}
+.journey-slot {
+  position: relative;
+  pointer-events: none;
+}
+.portfolio-journey.journey-projected .stage-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+.journey-projected .stage-panel.is-current {
+  visibility: visible;
+  pointer-events: auto;
+}
+.journey-projected .experience-intro {
+  position: static;
+}
+.journey-projected .bike-departure {
+  height: 100svh;
+}
+.journey-projected .departure-stage {
+  position: relative;
+}
+.journey-projected .stage-panel:focus {
+  outline: none;
+}
+.project-gallery {
+  min-width: 0;
+}
+.projects-section:not(.gallery-enhanced) .gallery-navigation {
+  display: none;
+}
+.project-rail img {
+  -webkit-touch-callout: none;
+}
+@media (min-width: 761px) and (max-width: 1023px) {
+  .journey-scroll .hero-stage {
+    padding-top: 160px;
+  }
+  .journey-scroll .hero-copy {
+    top: auto;
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .journey-scroll .section-pad {
+    padding-top: 100px;
+    padding-bottom: 64px;
+  }
+  .journey-scroll .hero-stage {
+    min-height: max(760px, 100svh);
+    height: auto;
+    padding-top: 106px;
+    padding-bottom: 80px;
+  }
+  .journey-scroll .hero-copy {
+    position: relative;
+    top: auto;
+    transform: none;
+  }
+  .journey-scroll .hero-stage .discipline-strip {
+    position: absolute;
+    bottom: 0;
+  }
+  .journey-scroll .hero-topline {
+    display: none;
+  }
+  .portfolio-journey.journey-scroll .footer {
+    justify-content: center;
+    padding-bottom: 36px;
+  }
+}

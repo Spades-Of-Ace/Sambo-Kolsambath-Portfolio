@@ -1,0 +1,163 @@
+.ignition-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  pointer-events: none;
+  contain: paint;
+  isolation: isolate;
+}
+.ignition-boot[hidden] {
+  display: none !important;
+}
+.boot-identity {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+}
+.boot-emblem {
+  position: relative;
+  display: block;
+  opacity: 0;
+  transform-origin: 0 0;
+}
+.boot-curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #030603;
+}
+.boot-wheel {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(50% - 24px);
+  width: min(540px, 94vw, 78svh);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.boot-wheel[hidden] {
+  display: none;
+}
+.boot-wheel-assembly,
+.boot-wheel-spin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.boot-wheel-spin {
+  /* Keep rotation registered to the artwork's axle. */
+  transform-origin: 49% 49.7%;
+}
+.boot-wheel-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.boot-wheel-sweep {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    112deg,
+    transparent 38%,
+    #edffd12e 48%,
+    #f8fff0a6 50%,
+    #edffd12e 52%,
+    transparent 62%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  mix-blend-mode: screen;
+  mask: url('/assets/motorcycle/h2r/boot-rear-wheel.webp') center / 100% 100%
+    no-repeat;
+  -webkit-mask: url('/assets/motorcycle/h2r/boot-rear-wheel.webp') center / 100%
+    100% no-repeat;
+}
+.boot-emblem .boot-logo {
+  position: relative;
+  z-index: 1;
+  width: 420px;
+  max-width: 75vw;
+  height: auto;
+}
+.boot-glint,
+.boot-halo {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  mask: url('/logos/ace-logo-transparent.webp') center / 100% 100% no-repeat;
+  -webkit-mask: url('/logos/ace-logo-transparent.webp') center / 100% 100%
+    no-repeat;
+}
+.boot-glint {
+  z-index: 2;
+  background: linear-gradient(
+    112deg,
+    transparent 35%,
+    #f4ffe6d9 48%,
+    #fff 50%,
+    #e4ffc585 53%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  mix-blend-mode: screen;
+}
+.boot-halo {
+  z-index: 0;
+  background: #b4ed73;
+  filter: blur(12px);
+  transform: scale(1.035);
+}
+.boot-track {
+  height: 2px;
+  margin-top: 24px;
+  background: #a2d77c1c;
+  overflow: hidden;
+}
+.boot-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #77b536, #d6ffac);
+}
+.boot-label {
+  margin-top: 12px;
+  color: #94b77c;
+  font-size: 8px;
+  text-align: right;
+}
+.backdrop-ignition {
+  position: relative;
+  width: 100%;
+}
+.backdrop-wake {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 38%,
+    #c4ff9b28 49%,
+    #efffe32c 50%,
+    transparent 62%
+  );
+  mix-blend-mode: screen;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ignition-boot,
+  .backdrop-wake {
+    display: none;
+  }
+}

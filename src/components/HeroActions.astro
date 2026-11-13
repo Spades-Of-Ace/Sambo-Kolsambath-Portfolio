@@ -1,23 +1,15 @@
 ---
-const { resumeHref = '/cv/Resume.pdf', cvHref = '/cv/Curriculum Vitae.pdf' } = Astro.props;
+import { ArrowUpRight, Download } from '@lucide/astro';
+const { resumeHref = '/cv/Resume.pdf', cvHref = '/cv/Curriculum Vitae.pdf' } =
+  Astro.props;
 ---
 
 <div class="hero-actions">
-  <a href="/projects" class="glass-button primary">
-    <span class="button-label">
-      EXPLORE MY <span class="glow-word">WORK</span> ->
-    </span>
-  </a>
-  <a
-    href={resumeHref}
-    class="hero-link"
-    target="_blank"
-    rel="noopener noreferrer">VIEW RESUME -></a
+  <a href="#projects" class="button button-primary"
+    >EXPLORE MY WORK <ArrowUpRight size={18} /></a
   >
-  <a
-    href={cvHref}
-    class="hero-link"
-    target="_blank"
-    rel="noopener noreferrer">VIEW CV -></a
+  <a href={resumeHref} class="text-link" download
+    >RESUME <Download size={15} /></a
   >
+  <a href={cvHref} class="text-link" download>CV <Download size={15} /></a>
 </div>

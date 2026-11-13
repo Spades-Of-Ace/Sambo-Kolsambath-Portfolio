@@ -1,5 +1,7 @@
 # build output
 dist/
+# local redesign screenshots and browser-check reports
+/tmp/racing-*
 # generated types
 .astro/
 

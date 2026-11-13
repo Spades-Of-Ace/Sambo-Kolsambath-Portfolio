@@ -62,7 +62,7 @@ const { label = "LET'S BUILD SOMETHING GREAT" } = Astro.props;
 </aside>
 
 <script>
-  const rail = document.querySelector('.social-rail');
+  const rail = document.querySelector<HTMLElement>('.social-rail');
   let railTicking = false;
 
   const keepRailAboveFooter = () => {
@@ -103,7 +103,7 @@ const { label = "LET'S BUILD SOMETHING GREAT" } = Astro.props;
   if (railText && journeyPanels.length) {
     const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
 
-    const setActivePanel = (panel) => {
+    const setActivePanel = (panel: Element) => {
       const label = panel.getAttribute('data-rail-label');
       const panelId = panel.getAttribute('id');
       if (label && railText.textContent !== label) {

@@ -1,8 +1,27 @@
 ---
-const contactGroups = [
+import {
+  ArrowUpRight,
+  Download,
+  FileText,
+  Mail,
+  BriefcaseBusiness,
+  Send,
+  MessagesSquare,
+} from '@lucide/astro';
+type ContactLink = {
+  label: string;
+  href: string;
+  icon: string | typeof FileText;
+  download?: boolean;
+};
+const contactGroups: {
+  title: string;
+  icon: typeof FileText;
+  links: ContactLink[];
+}[] = [
   {
     title: 'Professional',
-    icon: '/svg%20icon/briefcase-bold.svg',
+    icon: BriefcaseBusiness,
     links: [
       {
         label: 'LinkedIn',
@@ -17,25 +36,25 @@ const contactGroups = [
       {
         label: 'Download Resume',
         href: '/cv/Resume.pdf',
-        icon: '/icons/file-svg.svg',
+        icon: FileText,
         download: true,
       },
       {
         label: 'Download CV',
         href: '/cv/Curriculum Vitae.pdf',
-        icon: '/icons/file-svg.svg',
+        icon: FileText,
         download: true,
       },
     ],
   },
   {
     title: 'Direct',
-    icon: '/svg%20icon/telegram-logo-bold.svg',
+    icon: Send,
     links: [
       {
         label: 'Email',
         href: 'https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com',
-        icon: '/svg%20icon/envelope-simple-bold.svg',
+        icon: Mail,
       },
       {
         label: 'Telegram',
@@ -46,7 +65,7 @@ const contactGroups = [
   },
   {
     title: 'Social',
-    icon: '/svg%20icon/planet-fill.svg',
+    icon: MessagesSquare,
     links: [
       {
         label: 'Facebook',
@@ -58,32 +77,37 @@ const contactGroups = [
 ];
 ---
 
-<section class="contact-page" aria-labelledby="contact-title">
-  <div class="contact-grid-overlay" aria-hidden="true"></div>
-
-  <div class="contact-shell">
-    <div class="contact-intro">
-      <h1 id="contact-title" class="contact-heading">
-        <span>Let's Build</span>
-        <span>Something</span>
-        <span class="accent">Beyond.</span>
-      </h1>
-
-      <div class="contact-rule" aria-hidden="true"></div>
-
-      <p>
-        You've reached the edge of the journey. If my work resonates with you,
-        let's connect and build something beyond the horizon.
-      </p>
-    </div>
-
-    <div class="contact-cards" aria-label="Contact options">
-      {
-        contactGroups.map((group) => (
-          <article class="contact-card">
-            <img src={group.icon} alt="" aria-hidden="true" class="contact-card-icon" />
-            <h2>{group.title}</h2>
-
+<section
+  id="contact"
+  data-nav-target="contact"
+  class="contact-section section-pad"
+  aria-labelledby="contact-title"
+>
+  <div class="contact-intro" data-reveal>
+    <p class="small-label mono">
+      <i class="status-dot"></i> OPEN TO OPPORTUNITIES & COLLABORATIONS
+    </p><h2 id="contact-title">
+      LET'S BUILD<br /><a href="mailto:kolsambathsambo@gmail.com"
+        ><span data-heading-effect="shine">WHAT'S NEXT.</span><ArrowUpRight
+          aria-hidden="true"
+        /></a
+      >
+    </h2><p>
+      Have a project in mind, a role to talk about, or an idea worth exploring?<br
+      />I'd love to hear from you.
+    </p><a href="mailto:kolsambathsambo@gmail.com" class="contact-email"
+      >kolsambathsambo@gmail.com <ArrowUpRight size={22} /></a
+    >
+  </div>
+  <div class="contact-groups">
+    {
+      contactGroups.map((group) => (
+        <div class="contact-group" data-reveal>
+          <>
+            <h3 class="mono">
+              <group.icon size={18} aria-hidden="true" />
+              {group.title}
+            </h3>
             <ul>
               {group.links.map((link) => (
                 <li>
@@ -91,32 +115,34 @@ const contactGroups = [
                     href={link.href}
                     target={link.download ? undefined : '_blank'}
                     rel={link.download ? undefined : 'noopener noreferrer'}
-                    download={link.download ? true : undefined}
+                    download={link.download || undefined}
                   >
                     <span>
-                      <img src={link.icon} alt="" aria-hidden="true" />
+                      {typeof link.icon === 'string' ? (
+                        <img
+                          src={link.icon}
+                          alt=""
+                          aria-hidden="true"
+                          width="18"
+                          height="18"
+                        />
+                      ) : (
+                        <link.icon size={18} aria-hidden="true" />
+                      )}
                       {link.label}
                     </span>
-                    <i aria-hidden="true">{link.download ? 'v' : '>'}</i>
+                    {link.download ? (
+                      <Download size={16} />
+                    ) : (
+                      <ArrowUpRight size={17} />
+                    )}
                   </a>
                 </li>
               ))}
             </ul>
-          </article>
-        ))
-      }
-    </div>
-
-    <div class="contact-final-cta">
-      <span>Initiate Contact</span>
-      <a
-        href="https://mail.google.com/mail/?view=cm&fs=1&to=kolsambathsambo@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Let's Connect
-        <i aria-hidden="true">></i>
-      </a>
-    </div>
+          </>
+        </div>
+      ))
+    }
   </div>
 </section>

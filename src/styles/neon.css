@@ -1,0 +1,118 @@
+.backdrop-neon {
+  --light-a: #a4ed54;
+  --light-b: #dcffd4;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      116deg,
+      transparent 42%,
+      color-mix(in srgb, var(--light-a) 11%, transparent) 60%,
+      transparent 78%
+    ),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--light-b) 7%, transparent),
+      transparent 38%
+    );
+}
+.backdrop-neon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 78%,
+    color-mix(in srgb, var(--light-a) 8%, transparent) 95%,
+    color-mix(in srgb, var(--light-a) 17%, transparent)
+  );
+}
+.portfolio-journey [data-nav-target] {
+  --section-accent: #a4ed54;
+  --section-highlight: #e5ffd1;
+  --section-glow: #8cf24438;
+}
+.portfolio-journey #experience {
+  --section-accent: #c0e779;
+  --section-highlight: #f4ffd8;
+  --section-glow: #b7ea5e2c;
+}
+.portfolio-journey #projects {
+  --section-accent: #cfe0c9;
+  --section-highlight: #f5fff0;
+  --section-glow: #b4d2a92b;
+}
+.portfolio-journey #skills {
+  --section-accent: #b9ec7c;
+  --section-highlight: #efffdc;
+  --section-glow: #a3df6630;
+}
+.portfolio-journey #about {
+  --section-accent: #d5eaa6;
+  --section-highlight: #fff8d7;
+  --section-glow: #d5f0912a;
+}
+.portfolio-journey #contact {
+  --section-accent: #ffb19e;
+  --section-highlight: #fff1e9;
+  --section-glow: #ff806536;
+}
+.portfolio-journey [data-nav-target] .display-heading em,
+.portfolio-journey .hero-motto em,
+.portfolio-journey .contact-intro h2 a > span:not(.bits-shining) {
+  background: linear-gradient(
+    112deg,
+    var(--section-accent) 12%,
+    var(--section-highlight) 52%,
+    var(--section-accent) 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 26px var(--section-glow);
+}
+.hero-copy h1 {
+  text-shadow: 0 0 30px #b4ff8917;
+}
+/* Transformed glyphs cannot reliably inherit an ancestor's clipped gradient. */
+.display-heading em :is(.scroll-float-char, .bits-word, .bits-char) {
+  color: var(--section-accent, var(--green));
+  -webkit-text-fill-color: var(--section-accent, var(--green));
+}
+.hero-name-dot {
+  text-shadow: 0 0 18px #a4ed5459;
+}
+.portfolio-journey .section-label > span,
+.portfolio-journey .about-lead strong,
+.portfolio-journey .education-item .small-label,
+.portfolio-journey .about-info .mono,
+.portfolio-journey .contact-intro h2 svg {
+  color: var(--section-accent);
+}
+.portfolio-journey .section-topline {
+  border-image: linear-gradient(90deg, var(--section-accent), transparent 70%) 1;
+}
+.portfolio-journey .skills-section .skill-tabs button[aria-selected='true'] {
+  color: var(--section-accent);
+  background: #1b2b1aa0;
+  border-color: var(--section-accent);
+  box-shadow: inset 18px 0 26px -26px var(--section-accent);
+}
+.portfolio-journey .project-selector button.selected {
+  color: var(--section-accent);
+  border-color: var(--section-accent);
+  background: #222b2170;
+}
+.portfolio-journey .hero-actions .button-primary {
+  box-shadow: 0 0 24px #93ed4d18;
+}
+@media (forced-colors: active) {
+  [data-nav-target] .display-heading em,
+  .hero-motto em,
+  .contact-intro h2 a > span {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    text-shadow: none;
+  }
+}
