@@ -8,8 +8,11 @@ const experiences = [
     org: 'ADITI',
     period: 'April 2026 - Present',
     year: '2026',
-    description:
-      'Translate business and user requirements into workflows, wireframes, and responsive interface designs. Work with stakeholders and developers to clarify features, document decisions, and create consistent Figma components across client projects.',
+    highlights: [
+      'Translate business and user requirements into user flows, wireframes, and responsive interface designs.',
+      'Work with stakeholders and developers to clarify features and document decisions.',
+      'Create consistent Figma components across client projects.',
+    ],
     tags: ['UX/UI Design', 'Business Analysis', 'Figma', 'User Flow'],
   },
   {
@@ -20,8 +23,11 @@ const experiences = [
     org: 'Ministry of Post and Telecommunications',
     period: 'May 2025 - March 2026',
     year: '2025',
-    description:
-      'Contributed to the development and maintenance of national digital platforms, implementing responsive, component-based interfaces, integrating backend APIs, and maintaining structured frontend architecture across production systems.',
+    highlights: [
+      'Implemented responsive, component-based interfaces for national digital platforms.',
+      'Integrated backend APIs into frontend interfaces across production systems.',
+      'Helped maintain structured frontend architecture and existing platform interfaces.',
+    ],
     tags: [
       'Frontend Development',
       'Responsive UI',
@@ -37,8 +43,11 @@ const experiences = [
     org: 'Ministry of Post and Telecommunications',
     period: 'May 2024 - May 2025',
     year: '2024',
-    description:
-      'Contributed to UX/UI refinement and digital content development for government platforms, supporting interface consistency, bilingual content structure, accessibility, and alignment with government design standards.',
+    highlights: [
+      'Contributed to UX/UI refinements for government digital platforms.',
+      'Supported interface consistency and accessibility in line with government design standards.',
+      'Supported bilingual digital content development and structure.',
+    ],
     tags: [
       'UX/UI',
       'Design Systems',
@@ -54,8 +63,10 @@ const experiences = [
     org: "Children's Surgical Centre (CSC)",
     period: 'May 2023 - December 2025',
     year: '2023',
-    description:
-      "Managed and structured content across CSC's website and social media channels, helping communicate the organization's mission, programs, and impact while maintaining consistent branding and accessible digital communication.",
+    highlights: [
+      "Managed website and social media content to communicate CSC's mission, programs, and impact.",
+      'Maintained consistent branding and accessible digital communication across channels.',
+    ],
     tags: [
       'Web Content',
       'Social Media',
@@ -71,8 +82,10 @@ const experiences = [
     org: 'Kakvei',
     period: 'February 2023 - December 2025',
     year: '2023',
-    description:
-      'Organized and validated Khmer-language datasets for AI model training, focusing on linguistic accuracy, structural consistency, data integrity, and quality control for large-scale dataset development.',
+    highlights: [
+      'Organized and validated Khmer-language datasets for AI model training.',
+      'Checked linguistic accuracy, structural consistency, and data integrity to support large-scale dataset quality.',
+    ],
     tags: ['AI Data', 'Khmer Language', 'Data Validation', 'Quality Control'],
   },
 ];
@@ -127,7 +140,11 @@ const experiences = [
                 />
               </>
             </div>
-            <p class="career-description">{item.description}</p>
+            <ul class="career-description">
+              {item.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
             <p class="career-tags mono">{item.tags.join(' / ')}</p>
           </li>
         ))

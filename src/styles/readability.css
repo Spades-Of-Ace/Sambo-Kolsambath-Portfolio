@@ -1,4 +1,4 @@
-/* Supporting copy stays readable without changing the display-title scale. */
+/* Shared typography and responsive hero layout. */
 :root {
   --copy-size: 18px;
   --detail-size: 14px;
@@ -69,6 +69,22 @@
 .hero-description {
   width: 450px;
   max-width: 100%;
+}
+.hero-copy .hero-identity {
+  color: var(--white);
+  font-size: 18px;
+  line-height: 1.4;
+}
+.hero-identity .mono {
+  color: var(--green);
+  font-size: 14px;
+}
+.hero-copy .hero-role-heading {
+  font-size: 64px;
+  line-height: 1.04;
+}
+.hero-role-heading > span {
+  white-space: nowrap;
 }
 .hero-eyebrow,
 .hero-topline {
@@ -229,7 +245,14 @@
     font-size: 16px;
   }
   .hero-description {
+    width: 100%;
     max-width: 360px;
+  }
+  .hero-copy .hero-identity {
+    font-size: 16px;
+  }
+  .hero-copy .hero-role-heading {
+    font-size: 34px;
   }
   .hero-actions {
     flex-wrap: wrap;

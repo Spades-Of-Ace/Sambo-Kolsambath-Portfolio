@@ -78,6 +78,7 @@
 }
 .portfolio-journey .experience-section {
   --panel-rgb: 10 19 13;
+  background: rgb(var(--panel-rgb) / 0.68);
 }
 .portfolio-journey .projects-section {
   --panel-rgb: 10 15 20;

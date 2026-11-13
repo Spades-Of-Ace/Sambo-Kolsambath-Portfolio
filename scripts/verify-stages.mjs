@@ -429,6 +429,127 @@ try {
     },
   );
 
+  await check(
+    'Recruiter summary gives equal role emphasis and experience uses readable bullets',
+    async () => {
+      for (const width of [320, 390, 768, 1440]) {
+        const height = width < 700 ? 844 : 1000;
+        const page = await browser.newPage({
+          viewport: { width, height },
+          reducedMotion: 'reduce',
+        });
+        await ready(page);
+        const roles = page.locator('#home-hero-title > span');
+        assert.deepEqual(await roles.allTextContents(), [
+          'FRONTEND DEVELOPER',
+          'UX/UI DESIGNER',
+          'BUSINESS ANALYST.',
+        ]);
+        const roleStyles = await roles.evaluateAll((items) =>
+          items.map((item) => {
+            const style = getComputedStyle(item);
+            const box = item.getBoundingClientRect();
+            return {
+              emphasis: [style.fontSize, style.fontWeight, style.color].join(
+                '/',
+              ),
+              fits:
+                box.left >= 0 &&
+                box.right <= innerWidth &&
+                item.scrollWidth <= item.clientWidth + 1,
+            };
+          }),
+        );
+        assert.equal(new Set(roleStyles.map((item) => item.emphasis)).size, 1);
+        assert.ok(roleStyles.every((item) => item.fits));
+        assert.match(
+          await page.locator('.hero-identity').innerText(),
+          /SAMBO KOLSAMBATH/,
+        );
+        assert.equal(
+          await page.locator('.hero-motto').innerText(),
+          'DESIGNED TO PUSH LIMITS.',
+        );
+        assert.match(
+          await page.locator('.hero-description').innerText(),
+          /Precision in design\. Performance in code\./,
+        );
+        assert.ok(
+          await page.locator('.hero-description').evaluate((el) => {
+            const box = el.getBoundingClientRect();
+            return (
+              box.left >= 0 &&
+              box.right <= innerWidth &&
+              el.scrollWidth <= el.clientWidth + 1
+            );
+          }),
+          'The full hero description must fit the viewport.',
+        );
+        await page.screenshot({
+          path: out + '/recruiter-home-' + width + '.png',
+        });
+        await enter(page, 'experience');
+        assert.equal(await page.locator('.career-item').count(), 5);
+        assert.equal(await page.locator('ul.career-description').count(), 5);
+        assert.equal(await page.locator('p.career-description').count(), 0);
+        assert.deepEqual(
+          await page.locator('ul.career-description').evaluateAll((lists) =>
+            lists.map((list) => ({
+              count: list.children.length,
+              marker: getComputedStyle(list).listStyleType,
+            })),
+          ),
+          [3, 3, 3, 2, 2].map((count) => ({ count, marker: 'disc' })),
+        );
+        assert.equal(
+          await page
+            .locator('#experience')
+            .evaluate((el) => getComputedStyle(el).backgroundColor),
+          'rgba(10, 19, 13, 0.68)',
+        );
+        assert.equal(
+          await page
+            .locator('#projects')
+            .evaluate((el) => getComputedStyle(el).backgroundColor),
+          'rgba(10, 15, 20, 0.5)',
+        );
+        await page
+          .locator('img[data-bike-view="rear"]')
+          .evaluate((image) => image.decode());
+        await page.screenshot({
+          path: out + '/experience-bullets-' + width + '.png',
+        });
+        await page.evaluate(() => {
+          const slot = document.querySelector(
+            '[data-section-slot="experience"]',
+          );
+          scrollTo({
+            top: slot.offsetTop + slot.offsetHeight - innerHeight,
+            behavior: 'instant',
+          });
+        });
+        await page.waitForTimeout(250);
+        await assertSection(page, 'experience');
+        const finalBullet = await page
+          .locator(
+            '.career-item:last-child .career-description > li:last-child',
+          )
+          .boundingBox();
+        assert.ok(
+          finalBullet.y >= 80 && finalBullet.y + finalBullet.height <= height,
+        );
+        assert.ok(
+          await page
+            .locator('#experience')
+            .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+        );
+        await page.screenshot({
+          path: out + '/experience-last-role-' + width + '.png',
+        });
+        await page.close();
+      }
+    },
+  );
   for (const width of [320, 390, 768, 1024, 1920]) {
     await check(
       'Responsive stages, readable copy and controls at ' + width + 'px',

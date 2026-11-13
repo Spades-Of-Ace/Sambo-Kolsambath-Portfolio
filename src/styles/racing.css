@@ -727,6 +727,17 @@
   font-size: 13px;
   line-height: 1.85;
   margin-top: 17px;
+  padding-inline-start: 20px;
+  list-style: disc outside;
+}
+.career-description > li {
+  padding-inline-start: 4px;
+}
+.career-description > li + li {
+  margin-top: 8px;
+}
+.career-description > li::marker {
+  color: var(--section-accent, currentColor);
 }
 .career-tags {
   margin-top: 17px;
