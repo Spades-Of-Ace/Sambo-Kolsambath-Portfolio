@@ -10,6 +10,7 @@ const reducedMotion = () =>
 const decryptors = new WeakMap<HTMLElement, () => void>();
 const panelAnimations = new WeakMap<HTMLElement, () => void>();
 
+// SECTION: Scrambled text reveal
 export function decryptText(element: HTMLElement) {
   decryptors.get(element)?.();
   if (reducedMotion()) return () => {};
@@ -65,6 +66,7 @@ export function decryptText(element: HTMLElement) {
   return restore;
 }
 
+// SECTION: Entrance effects by section
 export function animateSectionContent(element: HTMLElement) {
   const section =
     element.closest<HTMLElement>('[data-nav-target]')?.dataset.navTarget;
@@ -123,6 +125,7 @@ export function animateSectionContent(element: HTMLElement) {
   }
 }
 
+// SECTION: Heading effects and cleanup
 export function initTextEffects() {
   const cleanups: (() => void)[] = [];
   const context = gsap.context(() => {});
@@ -209,6 +212,7 @@ export function initTextEffects() {
   };
 }
 
+// SECTION: Skills tab panel transitions
 export function resetSkillPanel(panel: HTMLElement) {
   panelAnimations.get(panel)?.();
   panelAnimations.delete(panel);
@@ -243,6 +247,7 @@ export function animateSkillPanel(panel: HTMLElement) {
   });
 }
 
+// SECTION: Click sparks
 export function initClickSparks() {
   const layer = document.createElement('div');
   layer.className = 'bits-click-layer';

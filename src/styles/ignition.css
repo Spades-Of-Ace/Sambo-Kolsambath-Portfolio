@@ -1,3 +1,4 @@
+/* SECTION: Startup overlay, curtain, and logo positioning */
 .ignition-boot {
   position: fixed;
   inset: 0;
@@ -30,6 +31,7 @@
   z-index: 0;
   background: #030603;
 }
+/* SECTION: Rear wheel artwork and light sweep */
 .boot-wheel {
   position: absolute;
   z-index: 1;
@@ -81,6 +83,7 @@
   -webkit-mask: url('/assets/motorcycle/h2r/boot-rear-wheel.webp') center / 100%
     100% no-repeat;
 }
+/* SECTION: Startup logo, halo, and metallic sweep */
 .boot-emblem .boot-logo {
   position: relative;
   z-index: 1;
@@ -118,6 +121,7 @@
   filter: blur(12px);
   transform: scale(1.035);
 }
+/* SECTION: Startup charge line and label */
 .boot-track {
   height: 2px;
   margin-top: 24px;
@@ -137,6 +141,7 @@
   font-size: 8px;
   text-align: right;
 }
+/* SECTION: Homepage backdrop reveal */
 .backdrop-ignition {
   position: relative;
   width: 100%;

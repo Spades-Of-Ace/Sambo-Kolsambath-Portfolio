@@ -1,3 +1,4 @@
+{/* SECTION: Static shader image and WebGL canvas */}
 <div
   class="hero-shader"
   data-hero-shader
@@ -15,6 +16,7 @@
   <canvas></canvas>
 </div>
 <script>
+  // SECTION: Load and dispose the live renderer
   const host = document.querySelector<HTMLElement>('[data-hero-shader]');
   if (host) {
     const motion = matchMedia('(prefers-reduced-motion: reduce)');

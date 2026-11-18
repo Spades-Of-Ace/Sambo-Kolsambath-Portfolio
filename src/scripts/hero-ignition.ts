@@ -51,6 +51,7 @@ export function initHeroIgnition() {
   let anchorCancelled = false;
   let disposed = false;
   let anchorFrame = 0;
+  // SECTION: Restore the homepage after completion or skip
   const settle = () => {
     clearTimeout(deadline);
     timeline?.kill();
@@ -92,6 +93,7 @@ export function initHeroIgnition() {
     copy.dataset.revealed = 'true';
     heading.dataset.bitsRevealed = 'true';
   };
+  // SECTION: Startup animation timeline
   const play = () => {
     active = true;
     hero.dataset.ignitionState = 'running';
@@ -106,6 +108,7 @@ export function initHeroIgnition() {
     });
     const source = mark.getBoundingClientRect();
     const destination = navLogo?.getBoundingClientRect();
+    // The GSAP timeline uses seconds; these are the navbar handoff times.
     const dockStart = 4;
     const dockEnd = 5.7;
     if (navLogo) gsap.set(navLogo, { autoAlpha: 0 });
@@ -167,6 +170,7 @@ export function initHeroIgnition() {
         [],
         dockStart,
       );
+    // SECTION: Rear wheel spin and light sweep
     sequence
       .to(wheel, { opacity: 0.38, duration: 1.1, ease: 'power2.out' }, 0.9)
       .fromTo(
@@ -191,7 +195,7 @@ export function initHeroIgnition() {
       .to(wheelSweep, { opacity: 1, duration: 0.15 }, 3.05)
       .to(wheelSweep, { opacity: 0, duration: 0.25 }, 3.8)
       .to(wheel, { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, 3.8);
-    // Move the same visible logo into the measured navbar rectangle, then swap identical assets.
+    // SECTION: Dock the visible logo into the measured navbar rectangle
     if (destination && source.width && destination.width) {
       sequence.to(
         mark,
@@ -211,6 +215,7 @@ export function initHeroIgnition() {
         dockStart,
       );
     }
+    // SECTION: Reveal the homepage and swap to the real navbar logo
     sequence
       .call(
         () => {
@@ -273,6 +278,7 @@ export function initHeroIgnition() {
     // The short inline guard covers missing scripts; this separate bound covers a stalled cinematic timeline.
     deadline = window.setTimeout(settle, 8000);
   };
+  // SECTION: Skip triggers and initial deep-link handling
   const onScroll = () => {
     if (active && scrollY > 24) settle();
   };

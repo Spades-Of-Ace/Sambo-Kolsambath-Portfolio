@@ -25,6 +25,7 @@ export function initSectionFlow() {
     tabindex: panel.getAttribute('tabindex'),
     inert: panel.inert,
   }));
+  // SECTION: Create a native scroll slot for each section
   const scenes: Scene[] = panels.map((panel) => {
     const slot = document.createElement('div');
     slot.className = 'journey-slot';
@@ -65,6 +66,7 @@ export function initSectionFlow() {
       return 0;
     }
   };
+  // SECTION: Update the visible panel, nav highlight, and keyboard focus
   const activate = (index: number) => {
     if (selected === index) return;
     const outgoing = scenes[selected]?.panel;
@@ -94,6 +96,7 @@ export function initSectionFlow() {
       new CustomEvent('stage:entered', { detail: { to: incoming.id } }),
     );
   };
+  // SECTION: Scroll position, fade-through, and vertical movement
   const render = () => {
     if (!scenes.length) return;
     const position = scrollY;
@@ -130,6 +133,7 @@ export function initSectionFlow() {
     activate(index);
     scene.panel.dataset.sceneOpacity = opacity.toFixed(3);
   };
+  // SECTION: Measure sections and preserve reading position on resize
   const measure = () => {
     frame = 0;
     const oldScene = scenes[selected];
@@ -184,6 +188,7 @@ export function initSectionFlow() {
   });
   const resize = new ResizeObserver(queueMeasure);
   scenes.forEach(({ panel }) => resize.observe(panel));
+  // SECTION: Anchor navigation, browser history, and focus scrolling
   const scrollToScene = (index: number, behavior: ScrollBehavior) =>
     window.scrollTo({ top: scenes[index].top, behavior });
   const onClick = (event: MouseEvent) => {

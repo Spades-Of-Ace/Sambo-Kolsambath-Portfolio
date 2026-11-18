@@ -25,6 +25,7 @@ export function initProjectGallery() {
   let dragged = false;
   let suppressClick = false;
   let transition: gsap.core.Animation | undefined;
+  // SECTION: Project autoplay timing and pause conditions
   const stop = () => {
     clearTimeout(timer);
     root.dataset.autoplay = 'paused';
@@ -56,6 +57,7 @@ export function initProjectGallery() {
       3000,
     );
   };
+  // SECTION: Selected project and slide transition
   const setSelected = (index: number, manual = false) => {
     selected = index;
     root.dataset.selectedProject = String(index);
@@ -121,6 +123,7 @@ export function initProjectGallery() {
           : best,
       0,
     );
+  // SECTION: Project buttons and keyboard controls
   selectors.forEach((button, index) =>
     button.addEventListener('click', () => goTo(index)),
   );
@@ -138,6 +141,7 @@ export function initProjectGallery() {
   });
   root.addEventListener('focusin', schedule);
   root.addEventListener('focusout', () => setTimeout(schedule, 0));
+  // SECTION: Hold to pause, drag, and swipe
   rail.addEventListener('dragstart', (event) => event.preventDefault());
   rail.addEventListener('pointerdown', (event) => {
     if (event.button !== 0 || held) return;
@@ -209,6 +213,7 @@ export function initProjectGallery() {
     },
     { passive: true },
   );
+  // SECTION: Visibility, resize, and section changes
   const visibility = new IntersectionObserver(
     (entries) => {
       inView = entries.some((entry) => entry.isIntersecting);

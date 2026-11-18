@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { shaderProfile } from './shader-presets';
 
 type View =
-  | 'quarter'
+  | 'dashboard'
   | 'detail'
   | 'head'
   | 'side'
@@ -29,23 +29,22 @@ export function initBikeJourney(wide: boolean, reduced: boolean) {
   const tone = scene.querySelector<HTMLElement>('.backdrop-tone')!;
   const lighting = scene.querySelector<HTMLElement>('[data-section-lighting]');
   const shader = scene.querySelector<HTMLElement>('[data-hero-shader]')!;
-  const views = [
-    ...scene.querySelectorAll<HTMLImageElement>('[data-bike-view]'),
-  ];
+  const views = [...scene.querySelectorAll<HTMLElement>('[data-bike-view]')];
   let current = 'home';
+  // SECTION: Camera framing and background image for each section
   const pose = (section: string): Pose => {
     const w = innerWidth;
     const h = innerHeight;
     const compact = !wide;
     const poses: Record<string, Pose> = {
       home: {
-        view: 'quarter',
-        width: Math.min(w * (compact ? 1.45 : 0.64), 1180),
-        cx: compact ? 0.64 : 0.71,
-        cy: compact ? 0.69 : 0.53,
+        view: 'dashboard',
+        width: Math.min(w * (compact ? 1.47 : 0.76), 1320),
+        cx: compact ? 0.46 : 0.72,
+        cy: compact ? 0.77 : 0.55,
         rotation: 0,
         tone: '#080d0b',
-        focus: 'three-quarter',
+        focus: 'instrument-cluster',
       },
       experience: {
         view: 'rear',
@@ -107,6 +106,7 @@ export function initBikeJourney(wide: boolean, reduced: boolean) {
     };
     return poses[section] ?? poses.home;
   };
+  // SECTION: Bike crossfade, camera motion, and shader colors
   const apply = (section: string, instant = false) => {
     current = section;
     const next = pose(section);
@@ -143,15 +143,16 @@ export function initBikeJourney(wide: boolean, reduced: boolean) {
         duration,
         overwrite: 'auto',
       });
-    views.forEach((image) =>
-      gsap.to(image, {
-        opacity: image.dataset.bikeView === next.view ? 1 : 0,
+    views.forEach((view) =>
+      gsap.to(view, {
+        opacity: view.dataset.bikeView === next.view ? 1 : 0,
         duration: reduced || instant ? 0 : 0.45,
         ease: 'power2.inOut',
         overwrite: 'auto',
       }),
     );
   };
+  // SECTION: Active section and footer visibility
   const pauseShader = (paused: boolean) => {
     shader.dataset.paused = String(paused);
     shader.dispatchEvent(new Event('shader:visibility'));
@@ -171,6 +172,7 @@ export function initBikeJourney(wide: boolean, reduced: boolean) {
     change((event as CustomEvent<{ to: string }>).detail.to);
   change(journey.dataset.activeStage ?? 'home', true);
   window.addEventListener('stage:change', onStage);
+  // SECTION: Closing bike departure animation
   const departure = journey.querySelector<HTMLElement>('[data-bike-departure]');
   if (departure && !reduced) {
     gsap

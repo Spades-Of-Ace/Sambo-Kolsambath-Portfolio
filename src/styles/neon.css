@@ -1,3 +1,4 @@
+/* SECTION: Background lighting */
 .backdrop-neon {
   --light-a: #a4ed54;
   --light-b: #dcffd4;
@@ -28,6 +29,7 @@
     color-mix(in srgb, var(--light-a) 17%, transparent)
   );
 }
+/* SECTION: Per-section accent palettes */
 .portfolio-journey [data-nav-target] {
   --section-accent: #a4ed54;
   --section-highlight: #e5ffd1;
@@ -58,6 +60,7 @@
   --section-highlight: #fff1e9;
   --section-glow: #ff806536;
 }
+/* SECTION: Heading highlights and glowing accents */
 .portfolio-journey [data-nav-target] .display-heading em,
 .portfolio-journey .hero-motto em,
 .portfolio-journey .contact-intro h2 a > span:not(.bits-shining) {

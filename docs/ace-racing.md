@@ -144,8 +144,8 @@ related readable gradients and low-opacity halos: ignition green, career
 yellow-green, project silver-green, skills lime, personal ivory-green and contact coral.
 The cyan/teal title accents and cool shader hues have been removed. Section
 shader geometry still changes, retaining the continuous scroll transition.
-Body copy stays sharp and untinted. The original 50% section-panel alpha and
-background transparency are unchanged.
+Body copy stays sharp and untinted. Section panels use 50% alpha, with a darker
+68% overlay on Experience for readability.
 
 ## React Bits Shader
 
@@ -157,13 +157,17 @@ profiles instead of mounting a different renderer for every section:
 
 | Section    | Bike View                   | Shader Profile                        |
 | ---------- | --------------------------- | ------------------------------------- |
-| Intro      | Front three-quarter         | Green ignition ribbons                |
+| Intro      | Dashboard close-up          | Green ignition ribbons                |
 | Experience | Rear three-quarter          | Long racing trajectories              |
 | Projects   | Engine and frame detail     | Silver-green blueprint lines and grid |
 | Skills     | Head-on precision view      | Lime/off-white telemetry arcs         |
 | About      | Cockpit and controls        | Soft rider-perspective sweep          |
 | Contact    | Illuminated red rear signal | Converging red/green signal arcs      |
 | Closing    | Complete side profile       | Clear-road ribbons                    |
+
+The home cockpit lights up for two seconds on a five-second loop after the
+opening sequence. See
+[home dashboard assets](home-dashboard-assets.md) for provenance and timing.
 
 Source: https://github.com/DavidHDev/react-bits/tree/main/src/ts-default/Backgrounds/Threads
 

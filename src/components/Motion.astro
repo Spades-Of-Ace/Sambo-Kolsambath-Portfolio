@@ -12,9 +12,11 @@
     initClickSparks,
   } from '../scripts/react-bits-motion';
   gsap.registerPlugin(ScrollTrigger);
+  // SECTION: Scroll layout and startup initialization
   const restoreFlow = initSectionFlow();
   const restoreIgnition = initHeroIgnition();
   const media = gsap.matchMedia();
+  // SECTION: Section entrances and click effects
   media.add('(prefers-reduced-motion: no-preference)', () => {
     const restoreHeadings = initScrollFloat();
     const restoreTextEffects = initTextEffects();
@@ -37,6 +39,7 @@
       reveals.revert();
     };
   });
+  // SECTION: Background transitions and departure
   media.add(
     {
       all: 'all',
@@ -50,6 +53,7 @@
       ),
   );
   void document.fonts.ready.then(() => ScrollTrigger.refresh());
+  // SECTION: Active navigation on standalone pages
   const navObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

@@ -132,15 +132,20 @@ try {
         assert.ok(Math.abs((await scene.boundingBox()).y) < 1);
         assert.equal(
           await page
-            .locator('[data-bike-view]')
+            .locator('.backdrop-bike-motion > [data-bike-view]')
             .evaluateAll(
               (els) =>
-                els.filter(
-                  (el) =>
+                els.filter((el) => {
+                  const image =
+                    el instanceof HTMLImageElement
+                      ? el
+                      : el.querySelector('img');
+                  return (
                     +getComputedStyle(el).opacity > 0.95 &&
-                    el.complete &&
-                    el.naturalWidth > 0,
-                ).length,
+                    image?.complete &&
+                    image.naturalWidth > 0
+                  );
+                }).length,
             ),
           1,
         );
@@ -149,7 +154,7 @@ try {
             await page
               .locator('#' + id)
               .evaluate((el) => getComputedStyle(el).backgroundColor),
-            /0\.5\)$/,
+            id === 'experience' ? /0\.68\)$/ : /0\.5\)$/,
           );
         await page.screenshot({ path: out + '/' + id + '.png' });
       }

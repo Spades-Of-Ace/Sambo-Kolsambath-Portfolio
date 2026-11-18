@@ -1,4 +1,4 @@
-/* Native scroll slots drive a single viewport content layer, without snapping or wheel interception. */
+/* SECTION: Section sizing for native scrolling */
 .journey-scroll .stage-panel {
   position: relative;
   min-height: 100svh;
@@ -28,6 +28,7 @@
 .journey-scroll .footer-bottom {
   width: 100%;
 }
+/* SECTION: One visible section at a time */
 .journey-projected {
   overflow-anchor: none;
 }
@@ -61,6 +62,7 @@
 .journey-projected .stage-panel:focus {
   outline: none;
 }
+/* SECTION: Gallery inside the scrolling layout */
 .project-gallery {
   min-width: 0;
 }
@@ -70,6 +72,7 @@
 .project-rail img {
   -webkit-touch-callout: none;
 }
+/* SECTION: Responsive section spacing */
 @media (min-width: 761px) and (max-width: 1023px) {
   .journey-scroll .hero-stage {
     padding-top: 160px;

@@ -1,3 +1,4 @@
+/* SECTION: Shared background layers and bike positioning */
 .racing-backdrop {
   position: fixed;
   inset: 0;
@@ -48,14 +49,57 @@
   height: 100%;
   object-fit: contain;
 }
-.backdrop-bike img:not([data-bike-view='quarter']) {
+.backdrop-bike-motion > img {
   opacity: 0;
 }
+/* SECTION: Home dashboard artwork and glitch timing */
+.backdrop-dashboard {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(#000 78%, transparent);
+}
+.backdrop-dashboard-lit {
+  opacity: 0;
+  filter: brightness(1.38);
+  /* Confine the pulse to the LCD and tachometer faces. */
+  mask-image:
+    radial-gradient(ellipse 14% 16% at 45% 48%, #000 78%, transparent),
+    radial-gradient(ellipse 10% 17% at 66.8% 46.5%, #000 86%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  body:has(#home[data-ignition-state='ready'])
+    .racing-backdrop[data-phase='home']
+    .backdrop-dashboard-lit.is-ready {
+    /* The first time is the repeat interval; the second is the initial delay. */
+    animation: dashboard-pulse 5s steps(1, end) 900ms infinite;
+  }
+}
+/* The full-lit hold is 0.9% to 40.9%: two seconds of the five-second loop. */
+@keyframes dashboard-pulse {
+  0% {
+    opacity: 1;
+    clip-path: inset(38% 0 47%);
+  }
+  0.9% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+  40.9% {
+    opacity: 1;
+    clip-path: inset(45% 0 48%);
+  }
+  41.6%,
+  100% {
+    opacity: 0;
+  }
+}
+/* SECTION: Backdrop shading behind text */
 .backdrop-shade {
   background:
     linear-gradient(90deg, #03070470, #03070426),
     linear-gradient(0deg, #03070490, transparent 58%, #03070420);
 }
+/* SECTION: Home layout and per-section background opacity */
 .portfolio-journey {
   position: relative;
   z-index: 1;
@@ -95,6 +139,7 @@
 .portfolio-journey .section-pad:hover {
   border-top-color: #8cd34a66;
 }
+/* SECTION: Section-specific text, accents, and footer overrides */
 .portfolio-journey .section-label > span,
 .portfolio-journey .display-heading em,
 .portfolio-journey .about-lead strong,
@@ -173,6 +218,7 @@
 .portfolio-journey .hero-bottom {
   margin-top: auto;
 }
+/* SECTION: Closing bike departure */
 .bike-departure {
   position: relative;
   min-height: 65svh;
@@ -206,7 +252,7 @@
   color: #c6d5c8;
 }
 
-/* React Bits Glare Hover: a contained light band, without another render loop. */
+/* SECTION: Glare hover and interactive element motion */
 .button,
 .icon-button,
 .project-image-link,
@@ -284,11 +330,12 @@
 .icon-button:active {
   transform: translateY(1px);
 }
+/* SECTION: Mobile backdrop and departure framing */
 @media (max-width: 760px) {
   .backdrop-bike {
-    width: 145%;
-    left: -10%;
-    top: 45%;
+    width: 147%;
+    left: -27.5%;
+    top: max(45%, calc(77% - 46vw));
   }
   .portfolio-journey .hero-bottom {
     margin-top: auto;

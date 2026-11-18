@@ -14,6 +14,7 @@ type ContactLink = {
   icon: string | typeof FileText;
   download?: boolean;
 };
+// SECTION: Contact links and document downloads
 const contactGroups: {
   title: string;
   icon: typeof FileText;
@@ -83,6 +84,7 @@ const contactGroups: {
   class="contact-section section-pad"
   aria-labelledby="contact-title"
 >
+  {/* SECTION: Contact headline and email */}
   <div class="contact-intro" data-reveal>
     <p class="small-label mono">
       <i class="status-dot"></i> OPEN TO OPPORTUNITIES & COLLABORATIONS
@@ -99,6 +101,7 @@ const contactGroups: {
       >kolsambathsambo@gmail.com <ArrowUpRight size={22} /></a
     >
   </div>
+  {/* SECTION: Professional, direct, and social link groups */}
   <div class="contact-groups">
     {
       contactGroups.map((group) => (

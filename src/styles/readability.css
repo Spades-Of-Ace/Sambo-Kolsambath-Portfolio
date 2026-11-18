@@ -1,4 +1,4 @@
-/* Shared typography and responsive hero layout. */
+/* SECTION: Shared type sizes and icon accents */
 :root {
   --copy-size: 18px;
   --detail-size: 14px;
@@ -21,6 +21,7 @@
 .contact-group h3 > .lucide {
   color: var(--section-accent, var(--green-strong));
 }
+/* SECTION: Navbar, footer, and startup logo sizes */
 .brand-logo {
   display: block;
   width: 156px;
@@ -59,6 +60,7 @@
 .nav-index {
   font-size: 12px;
 }
+/* SECTION: Home typography and section introductions */
 .hero-description,
 .section-description,
 .about-layout .section-description,
@@ -93,6 +95,7 @@
 .discipline-strip {
   font-size: 17px;
 }
+/* SECTION: Experience and shared detail text */
 .career-checkpoint {
   font-size: 12px;
 }
@@ -142,6 +145,7 @@
 .skill-tabs button {
   font-size: 16px;
 }
+/* SECTION: Project selector, arrows, and preview labels */
 .project-browser {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -178,6 +182,7 @@
   overflow-wrap: anywhere;
   white-space: normal;
 }
+/* SECTION: About, departure, and footer details */
 .about-traits strong,
 .about-traits p,
 .about-photo figcaption {
@@ -199,6 +204,7 @@
 .footer-bottom > div {
   flex-wrap: wrap;
 }
+/* SECTION: Screen-reader-only content */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -210,6 +216,7 @@
   white-space: nowrap;
   border: 0;
 }
+/* SECTION: Tablet navigation */
 @media (max-width: 1100px) and (min-width: 761px) {
   .site-nav {
     gap: 18px;
@@ -222,6 +229,7 @@
     height: 65px;
   }
 }
+/* SECTION: Mobile typography and control sizes */
 @media (max-width: 760px) {
   :root {
     --copy-size: 16px;

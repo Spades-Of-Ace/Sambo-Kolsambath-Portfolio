@@ -3,6 +3,7 @@
 // License: /assets/shaders/react-bits-LICENSE.txt
 import { shaderProfile, type ShaderUniforms } from './shader-presets';
 
+// SECTION: GLSL line geometry and color
 const LINE_VERTEX = `#version 300 es
 precision highp float;
 in vec2 aPoint;
@@ -100,6 +101,7 @@ void main() {
   float coverage = (1.0 - smoothstep(0.0, vDraw, abs(vEdge))) * (vBand / vDraw) * vAlpha;
   outColor = vec4(mix(uColor, uAccent, vIndex) * coverage, coverage);
 }`;
+// SECTION: GLSL screen composite and grid
 const SCREEN_VERTEX = `#version 300 es
 in vec2 aPosition;
 out vec2 vUv;
@@ -142,6 +144,7 @@ void main() {
   outColor = result;
 }`;
 
+// SECTION: WebGL setup and GPU resources
 export function createThreadsShader(host: HTMLElement) {
   const canvas = host.querySelector('canvas')!;
   const stage =
@@ -286,6 +289,7 @@ export function createThreadsShader(host: HTMLElement) {
     last = 0;
     host.dataset.running = 'false';
   };
+  // SECTION: Draw the shader and control animation timing
   const render = () => {
     const w = canvas.width;
     const h = canvas.height;
@@ -380,6 +384,7 @@ export function createThreadsShader(host: HTMLElement) {
       frame = requestAnimationFrame(tick);
     }
   };
+  // SECTION: Canvas size and resolution limits
   const resize = () => {
     if (!alive || gl.isContextLost()) return;
     width = Math.max(1, host.clientWidth);
@@ -422,6 +427,7 @@ export function createThreadsShader(host: HTMLElement) {
     }
     render();
   };
+  // SECTION: Pointer, visibility, and section profile updates
   const onPointer = (event: PointerEvent) => {
     if (event.pointerType !== 'mouse' || !visible || reducedMotion.matches)
       return;

@@ -38,7 +38,8 @@ const controlledPage = async (viewport) => {
   await page.waitForSelector('#home[data-ignition-state="running"]');
   await page.evaluate(() => document.fonts.ready);
   await page
-    .locator('img[data-bike-view="quarter"]')
+    .locator('.backdrop-dashboard > img')
+    .first()
     .evaluate((image) => image.decode());
   await page
     .locator('[data-boot-wheel-image]')
@@ -91,6 +92,104 @@ const assertReady = async (page) => {
   );
 };
 try {
+  await check(
+    'Home dashboard holds fully lit for two seconds and loops on Home',
+    async () => {
+      for (const viewport of [
+        { width: 1440, height: 1000 },
+        { width: 390, height: 844 },
+      ]) {
+        const page = await controlledPage(viewport);
+        const lit = page.locator('.backdrop-dashboard-lit');
+        await page.waitForSelector('.backdrop-dashboard-lit.is-ready', {
+          state: 'attached',
+        });
+        assert.equal(await lit.evaluate((el) => el.getAnimations().length), 0);
+        await page.keyboard.press('Escape');
+        await page.clock.runFor(100);
+        await assertReady(page);
+        assert.equal(
+          await page
+            .locator('[data-racing-backdrop]')
+            .getAttribute('data-bike-view'),
+          'dashboard',
+        );
+        const sample = (time) =>
+          lit.evaluate((el, time) => {
+            const [pulse] = el.getAnimations();
+            pulse.pause();
+            pulse.currentTime = time;
+            return getComputedStyle(el).opacity;
+          }, time);
+        const box = await lit.boundingBox();
+        const clip = {
+          x: box.x + box.width * 0.45,
+          y: box.y + box.height * 0.42,
+          width: box.width * 0.065,
+          height: box.height * 0.115,
+        };
+        assert.ok(clip.x >= 0 && clip.x + clip.width <= viewport.width);
+        assert.ok(clip.y >= 0 && clip.y + clip.height <= viewport.height);
+        assert.equal(await sample(0), '0');
+        const dark = await page.screenshot({ clip });
+        await page.screenshot({
+          path: `${out}/dashboard-off-${viewport.width}.png`,
+        });
+        assert.equal(await sample(1040), '1');
+        const illuminated = await page.screenshot({ clip });
+        await page.screenshot({
+          path: `${out}/dashboard-on-${viewport.width}.png`,
+        });
+        const before = await sharp(dark).stats();
+        const after = await sharp(illuminated).stats();
+        assert.ok(
+          after.channels[1].mean > before.channels[1].mean + 1,
+          `The LCD should brighten on ${viewport.width}px (${before.channels[1].mean} to ${after.channels[1].mean}).`,
+        );
+        assert.equal(await sample(2920), '1');
+        assert.equal(
+          await lit.evaluate((el) => getComputedStyle(el).clipPath),
+          'inset(0px)',
+        );
+        assert.equal(await sample(2990), '0');
+        assert.equal(await sample(5980), '1');
+        assert.equal(await sample(7990), '0');
+        await page.evaluate(() => {
+          const slot = document.querySelector(
+            '[data-section-slot="experience"]',
+          );
+          window.scrollTo({ top: slot.offsetTop, behavior: 'instant' });
+        });
+        await page.clock.runFor(200);
+        assert.equal(await lit.evaluate((el) => el.getAnimations().length), 0);
+        await page.close();
+      }
+    },
+  );
+  await check(
+    'Dashboard stays dark without the lit asset or with reduced motion',
+    async () => {
+      for (const blocked of [false, true]) {
+        const page = await browser.newPage({
+          reducedMotion: blocked ? 'no-preference' : 'reduce',
+        });
+        if (blocked)
+          await page.route('**/home-dashboard-on.webp', (route) =>
+            route.abort(),
+          );
+        await page.goto(url, { waitUntil: 'networkidle' });
+        await page.keyboard.press('Escape');
+        await assertReady(page);
+        const lit = page.locator('.backdrop-dashboard-lit');
+        assert.equal(await lit.evaluate((el) => el.getAnimations().length), 0);
+        assert.equal(
+          await lit.evaluate((el) => getComputedStyle(el).opacity),
+          '0',
+        );
+        await page.close();
+      }
+    },
+  );
   await check(
     'Rear wheel artwork has transparent spokes and a bounded asset size',
     async () => {

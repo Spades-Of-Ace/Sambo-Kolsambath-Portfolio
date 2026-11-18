@@ -1,5 +1,6 @@
 <div class="ignition-boot" data-ignition-boot hidden aria-hidden="true">
   <div class="boot-curtain" data-boot-curtain></div>
+  {/* SECTION: Startup rear wheel artwork */}
   <div class="boot-wheel" data-boot-wheel>
     <div class="boot-wheel-assembly" data-boot-wheel-assembly>
       <div class="boot-wheel-spin" data-boot-wheel-spin>
@@ -16,6 +17,7 @@
       </div>
     </div>
   </div>
+  {/* SECTION: Startup logo and charge line */}
   <div class="boot-identity">
     <div class="brand boot-emblem" data-boot-mark>
       <span class="boot-halo" data-boot-halo></span>
@@ -36,6 +38,7 @@
   </div>
 </div>
 <script is:inline>
+  // SECTION: Startup overlay fallback before the main script loads
   (() => {
     const boot = document.querySelector('[data-ignition-boot]');
     const deepLink =

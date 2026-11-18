@@ -15,14 +15,25 @@ import HeroShader from './HeroShader.astro';
   <div class="backdrop-bike" data-background-bike>
     <div class="backdrop-ignition">
       <div class="backdrop-bike-motion">
-        <img
-          data-bike-view="quarter"
-          src="/assets/motorcycle/h2r/bike-front.webp"
-          width="1440"
-          height="900"
-          alt=""
-          fetchpriority="high"
-        />
+        {/* SECTION: Home dashboard images, dark and lit */}
+        <div class="backdrop-dashboard" data-bike-view="dashboard">
+          <img
+            src="/assets/motorcycle/h2r/home-dashboard-off.webp"
+            width="1440"
+            height="900"
+            alt=""
+            fetchpriority="high"
+          />
+          <img
+            class="backdrop-dashboard-lit"
+            src="/assets/motorcycle/h2r/home-dashboard-on.webp"
+            width="1440"
+            height="900"
+            alt=""
+            decoding="async"
+          />
+        </div>
+        {/* SECTION: Other sections' bike views and departure artwork */}
         <img
           data-bike-view="detail"
           src="/assets/motorcycle/h2r/bike-detail.webp"
@@ -74,3 +85,16 @@ import HeroShader from './HeroShader.astro';
   </div>
   <div class="backdrop-shade"></div>
 </div>
+
+<script>
+  const lit = document.querySelector<HTMLImageElement>(
+    '.backdrop-dashboard-lit',
+  );
+  if (lit) {
+    // Leave the dark frame in place if the lit frame can't be decoded.
+    void lit.decode().then(
+      () => lit.classList.add('is-ready'),
+      () => {},
+    );
+  }
+</script>

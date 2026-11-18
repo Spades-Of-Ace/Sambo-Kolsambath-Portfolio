@@ -1,3 +1,4 @@
+/* SECTION: Theme, reset, and base typography */
 @layer base {
   :root {
     --carbon: #080a09;
@@ -98,6 +99,7 @@
 .skip-link:focus {
   transform: none;
 }
+/* SECTION: Shared section layout and headings */
 .section-pad {
   padding: 94px var(--gutter) 108px;
 }
@@ -157,6 +159,7 @@
   gap: 40px;
   margin-bottom: 42px;
 }
+/* SECTION: Shared buttons, text links, and icon controls */
 .button {
   display: inline-flex;
   align-items: center;
@@ -208,6 +211,7 @@
   opacity: 0.25;
   cursor: default;
 }
+/* SECTION: Navbar, brand, and mobile menu */
 .site-header {
   position: fixed;
   top: 0;
@@ -319,6 +323,7 @@
   transform: scaleX(var(--progress, 0));
   transform-origin: left;
 }
+/* SECTION: Home layout and shader surface */
 .hero-section {
   position: relative;
   background: #080a09;
@@ -451,6 +456,7 @@
 .scroll-float-char {
   display: inline-block;
 }
+/* SECTION: Home headline, description, and actions */
 .hero-topline {
   position: absolute;
   top: 118px;
@@ -586,6 +592,7 @@
   left: 0;
   right: 0;
 }
+/* SECTION: Experience timeline, roles, and bullet lists */
 .experience-section {
   background: var(--paper);
   color: #171c19;
@@ -746,6 +753,7 @@
   color: #4a5d42;
   text-transform: uppercase;
 }
+/* SECTION: Projects gallery, slide layout, and previews */
 .projects-section {
   background: #0b0e0c;
 }
@@ -1011,6 +1019,7 @@
 .gallery-enhanced .project-rail.is-sliding {
   scroll-snap-type: none;
 }
+/* SECTION: Skills tabs and panels */
 .skills-section {
   background: #171c19;
 }
@@ -1117,6 +1126,7 @@
   color: #8aa184;
   font-size: 9px;
 }
+/* SECTION: About profile and education */
 .about-section {
   background: var(--paper);
   color: #171c19;
@@ -1266,6 +1276,7 @@
   color: #7d8b77;
   font-size: 9px;
 }
+/* SECTION: Contact headline and link groups */
 .contact-section {
   position: relative;
   background: #0b0e0c;
@@ -1349,6 +1360,7 @@
 .contact-group li a:hover {
   color: var(--green);
 }
+/* SECTION: Footer */
 .footer {
   padding: 40px var(--gutter) 26px;
   background: #141a15;
@@ -1385,6 +1397,7 @@
 .footer-bottom a:hover {
   color: var(--white);
 }
+/* SECTION: Wide desktop layout */
 @media (min-width: 1700px) {
   :root {
     --gutter: max(80px, calc((100vw - 1560px) / 2));
@@ -1406,6 +1419,7 @@
     width: 410px;
   }
 }
+/* SECTION: Compact desktop layout */
 @media (max-width: 1200px) {
   :root {
     --gutter: 40px;
@@ -1474,6 +1488,7 @@
     font-size: 108px;
   }
 }
+/* SECTION: Tablet layout */
 @media (max-width: 1000px) {
   .nav-contact {
     display: none;
@@ -1540,6 +1555,7 @@
     gap: 40px;
   }
 }
+/* SECTION: Mobile layout */
 @media (max-width: 760px) {
   :root {
     --gutter: 24px;
@@ -1559,6 +1575,7 @@
   .section-code {
     font-size: 9px;
   }
+  /* SECTION: Mobile navbar */
   .nav-inner {
     height: 72px;
     justify-content: space-between;
@@ -1643,6 +1660,7 @@
   .site-nav a.active {
     color: var(--green);
   }
+  /* SECTION: Mobile home */
   .hero-stage {
     height: max(820px, 100svh);
   }
@@ -1738,6 +1756,7 @@
     font-size: 13px;
     margin-top: 22px;
   }
+  /* SECTION: Mobile experience */
   .experience-layout {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1774,6 +1793,7 @@
   .career-description {
     font-size: 12px;
   }
+  /* SECTION: Mobile projects */
   .section-heading-row {
     display: block;
     margin-bottom: 28px;
@@ -1821,6 +1841,7 @@
   .project-track {
     display: none;
   }
+  /* SECTION: Mobile skills */
   .skills-workbench {
     grid-template-columns: 1fr;
     margin-top: 35px;
@@ -1872,6 +1893,7 @@
   .skill-panel-note {
     font-size: 8px;
   }
+  /* SECTION: Mobile about and education */
   .about-layout {
     grid-template-columns: 1fr;
     gap: 44px;
@@ -1925,6 +1947,7 @@
     gap: 30px;
     margin-top: 40px;
   }
+  /* SECTION: Mobile footer */
   .footer {
     padding-top: 30px;
   }
@@ -1950,6 +1973,7 @@
     display: none;
   }
 }
+/* SECTION: Small phone layout */
 @media (max-width: 390px) {
   :root {
     --gutter: 20px;
@@ -2006,6 +2030,7 @@
     gap: 24px;
   }
 }
+/* SECTION: Home layout overrides for tablet, mobile, and short desktop */
 @media (max-width: 1023px) {
   .hero-stage {
     display: flex;
@@ -2095,6 +2120,7 @@
     font-size: 112px;
   }
 }
+/* SECTION: Cinematic hero and mobile gallery enhancements */
 @media (min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
   .hero-section.is-cinematic {
     height: 340svh;
@@ -2137,6 +2163,7 @@
     padding-right: 8px;
   }
 }
+/* SECTION: Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

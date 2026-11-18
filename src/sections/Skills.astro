@@ -1,5 +1,6 @@
 ---
 import { CodeXml, Layers, Wrench, Terminal, ArrowUpRight } from '@lucide/astro';
+// SECTION: Skill categories and their descriptions
 const groups = [
   {
     title: 'Core frontend stack',
@@ -54,6 +55,7 @@ const groups = [
       how to use them.
     </p>
   </div>
+  {/* SECTION: Skill tabs and detail panels */}
   <div class="skills-workbench" data-reveal>
     <div class="skill-tabs" aria-label="Skill categories">
       {
@@ -118,6 +120,7 @@ const groups = [
     animateSkillPanel,
     resetSkillPanel,
   } from '../scripts/react-bits-motion';
+  // SECTION: Selected tab, keyboard navigation, and panel animation
   const tabs = [
     ...document.querySelectorAll<HTMLButtonElement>('[data-skill-tab]'),
   ];

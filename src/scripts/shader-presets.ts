@@ -1,3 +1,4 @@
+// SECTION: Background shader colors, shapes, and movement by section
 export const shaderPresets = {
   home: {
     name: 'ignition',
